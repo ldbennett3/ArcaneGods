@@ -2,6 +2,8 @@ package com.loganb.arcanegods;
 
 import com.loganb.arcanegods.init.ModRecipes;
 import com.loganb.arcanegods.proxy.CommonProxy;
+import com.loganb.arcanegods.tabs.BlocksTab;
+import com.loganb.arcanegods.tabs.ItemsTab;
 import com.loganb.arcanegods.util.Reference;
 import com.loganb.arcanegods.world.ModWorldGen;
 
@@ -14,8 +16,6 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import tabs.BlocksTab;
-import tabs.ItemsTab;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 public class Main {

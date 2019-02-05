@@ -1,4 +1,4 @@
-package tabs;
+package com.loganb.arcanegods.tabs;
 
 import com.loganb.arcanegods.init.ModBlocks;
 import com.loganb.arcanegods.init.ModItems;
