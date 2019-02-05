@@ -1,0 +1,19 @@
+// Creative Tabs
+itemGroup.blocksTab=Arcane Gods Blocks
+itemGroup.itemsTab=Arcane Gods Items
+
+// Items
+item.test_crystal.name=Test Crystal
+
+// Blocks
+tile.test_crystal_block.name=Test Crystal Block
+tile.test_crystal_ore.name=Test Crystal Ore
+
+// Tools
+item.test_crystal_sword.name=Test Crystal Sword
+
+// Armor
+item.test_crystal_helmet.name=Test Crystal Helmet
+item.test_crystal_chestplate.name=Test Crystal Chestplate
+item.test_crystal_leggings.name=Test Crystal Leggings
+item.test_crystal_boots.name=Test Crystal Boots

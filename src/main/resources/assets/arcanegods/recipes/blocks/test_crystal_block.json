@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "XXX",
+        "XXX",
+        "XXX"
+    ],
+   
+    "key":
+    {
+        "X":
+        {
+            "item": "arcanegods:test_crystal"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:test_crystal_block",
+        "count": 1
+    }
+}
