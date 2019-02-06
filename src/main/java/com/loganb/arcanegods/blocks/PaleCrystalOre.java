@@ -11,9 +11,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class TestCrystalOre extends BlockBase implements IHasModel {
+public class PaleCrystalOre extends BlockBase implements IHasModel {
 
-	public TestCrystalOre(String name, Material material, CreativeTabs tab) {
+	public PaleCrystalOre(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab);
 		setSoundType(SoundType.STONE);
 		setHardness(5.0F);
@@ -23,7 +23,7 @@ public class TestCrystalOre extends BlockBase implements IHasModel {
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return ModItems.TEST_CRYSTAL;
+		return ModItems.PALE_CRYSTAL;
 	}
 
 	@Override

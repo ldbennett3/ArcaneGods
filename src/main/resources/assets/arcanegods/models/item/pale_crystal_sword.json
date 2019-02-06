@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "arcanegods:items/tools/pale_crystal_sword"
+    }
+}

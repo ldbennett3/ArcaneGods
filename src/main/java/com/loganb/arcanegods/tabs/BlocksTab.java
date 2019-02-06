@@ -15,7 +15,7 @@ public class BlocksTab extends CreativeTabs {
 
 	@Override
 	public ItemStack getTabIconItem() {
-		return new ItemStack(Item.getItemFromBlock(ModBlocks.TEST_CRYSTAL_BLOCK), 1);
+		return new ItemStack(Item.getItemFromBlock(ModBlocks.PALE_CRYSTAL_BLOCK), 1);
 	}
 	
 }

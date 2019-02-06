@@ -24,7 +24,7 @@ public class ModWorldGen implements IWorldGenerator {
 	private void generateOverworld(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkWriter) {
 		
 		// Test Crystal Ore generation
-		generateOre(ModBlocks.TEST_CRYSTAL_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 64, rand.nextInt(4) + 1, 20);
+		generateOre(ModBlocks.PALE_CRYSTAL_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 64, rand.nextInt(4) + 1, 20);
 		
 	}
 	

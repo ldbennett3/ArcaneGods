@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "arcanegods:blocks/test_crystal_ore"
+        "all": "arcanegods:blocks/pale_crystal_block"
     }
 }

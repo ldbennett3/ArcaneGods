@@ -8,7 +8,7 @@ public class ModRecipes {
 
 	public static void init() {
 		// Test Crystal -> Stone block
-		GameRegistry.addSmelting(ModItems.TEST_CRYSTAL, new ItemStack(Blocks.STONE, 1), 5.0F);
+		GameRegistry.addSmelting(ModItems.PALE_CRYSTAL, new ItemStack(Blocks.STONE, 1), 5.0F);
 	}
 	
 }

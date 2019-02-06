@@ -31,21 +31,21 @@ public class ModItems {
 	public static final List<Item> ITEMS = new ArrayList<Item>();
 
 	// Materials
-	public static final ToolMaterial MATERIAL_CRYSTAL = EnumHelper.addToolMaterial("material_crystal", 2, 300, 8.0F, 2.0F, 20);
-	public static final ArmorMaterial ARMOR_MATERIAL_CRYSTAL = EnumHelper.addArmorMaterial("armor_material_crystal", Reference.MOD_ID + ":test_crystal", 11, new int[] {2,3,5,1}, 
+	public static final ToolMaterial MATERIAL_PALE_CRYSTAL = EnumHelper.addToolMaterial("material_pale_crystal", 2, 300, 8.0F, 2.0F, 20);
+	public static final ArmorMaterial ARMOR_MATERIAL_PALE_CRYSTAL = EnumHelper.addArmorMaterial("armor_material_pale_crystal", Reference.MOD_ID + ":pale_crystal", 11, new int[] {2,3,5,1}, 
 			30, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 	
 	// Items
-	public static final Item TEST_CRYSTAL = new ItemBase("test_crystal", Main.itemsTab);
+	public static final Item PALE_CRYSTAL = new ItemBase("pale_crystal", Main.itemsTab);
 	
 	// Tools
-	public static final ItemSword TEST_CRYSTAL_SWORD = new SwordBase("test_crystal_sword", MATERIAL_CRYSTAL, Main.itemsTab);
+	public static final ItemSword PALE_CRYSTAL_SWORD = new SwordBase("pale_crystal_sword", MATERIAL_PALE_CRYSTAL, Main.itemsTab);
 	
 	// Armor
 	// RenderIndexID (3rd param) is always 1 except for legs, which are 2
-	public static final Item TEST_CRYSTAL_HELMET = new ArmorBase("test_crystal_helmet", ARMOR_MATERIAL_CRYSTAL, 1, EntityEquipmentSlot.HEAD, Main.itemsTab);
-	public static final Item TEST_CRYSTAL_CHESTPLATE = new ArmorBase("test_crystal_chestplate", ARMOR_MATERIAL_CRYSTAL, 1, EntityEquipmentSlot.CHEST, Main.itemsTab);
-	public static final Item TEST_CRYSTAL_LEGGINGS = new ArmorBase("test_crystal_leggings", ARMOR_MATERIAL_CRYSTAL, 2, EntityEquipmentSlot.LEGS, Main.itemsTab);
-	public static final Item TEST_CRYSTAL_BOOTS = new ArmorBase("test_crystal_boots", ARMOR_MATERIAL_CRYSTAL, 1, EntityEquipmentSlot.FEET, Main.itemsTab);
+	public static final Item PALE_CRYSTAL_HELMET = new ArmorBase("pale_crystal_helmet", ARMOR_MATERIAL_PALE_CRYSTAL, 1, EntityEquipmentSlot.HEAD, Main.itemsTab);
+	public static final Item PALE_CRYSTAL_CHESTPLATE = new ArmorBase("pale_crystal_chestplate", ARMOR_MATERIAL_PALE_CRYSTAL, 1, EntityEquipmentSlot.CHEST, Main.itemsTab);
+	public static final Item PALE_CRYSTAL_LEGGINGS = new ArmorBase("pale_crystal_leggings", ARMOR_MATERIAL_PALE_CRYSTAL, 2, EntityEquipmentSlot.LEGS, Main.itemsTab);
+	public static final Item PALE_CRYSTAL_BOOTS = new ArmorBase("pale_crystal_boots", ARMOR_MATERIAL_PALE_CRYSTAL, 1, EntityEquipmentSlot.FEET, Main.itemsTab);
 	
 }

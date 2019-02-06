@@ -4,9 +4,9 @@ import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 
-public class TestCrystalBlock extends BlockBase {
+public class PaleCrystalBlock extends BlockBase {
 
-	public TestCrystalBlock(String name, Material material, CreativeTabs tab) {
+	public PaleCrystalBlock(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab);
 		
 		setSoundType(SoundType.GLASS);

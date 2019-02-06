@@ -12,13 +12,13 @@
     {
         "X":
         {
-            "item": "arcanegods:test_crystal"
+            "item": "arcanegods:pale_crystal"
         }
     },
    
     "result":
     {
-        "item": "arcanegods:test_crystal_block",
+        "item": "arcanegods:pale_crystal_block",
         "count": 1
     }
 }
