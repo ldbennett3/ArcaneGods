@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "XXX",
+        "XXX",
+        "XXX"
+    ],
+   
+    "key":
+    {
+        "X":
+        {
+            "item": "arcanegods:thunder_crystal"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:thunder_crystal_block",
+        "count": 1
+    }
+}

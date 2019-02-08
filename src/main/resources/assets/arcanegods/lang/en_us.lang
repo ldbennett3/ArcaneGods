@@ -4,10 +4,17 @@ itemGroup.itemsTab=Arcane Gods Items
 
 // Items
 item.pale_crystal.name=Pale Crystal
+item.fiery_crystal.name=Fiery Crystal
+item.lavender_crystal.name=Lavender Crystal
+item.icey_crystal.name=Icey Crystal
+item.thunder_crystal.name=Thunder Crystal
 
-// Blocks
-tile.pale_crystal_block.name=Pale Crystal Block
-tile.pale_crystal_ore.name=Pale Crystal Ore
+item.copper_ingot.name=Copper Ingot
+item.bronze_ingot.name=Bronze Ingot
+item.steel_ingot.name=Steel Ingot
+item.silver_ingot.name=Silver Ingot
+
+item.neutralizing_powder.name=Neutralizing Powder
 
 // Tools
 item.pale_crystal_sword.name=Pale Crystal Sword
@@ -17,3 +24,28 @@ item.pale_crystal_helmet.name=Pale Crystal Helmet
 item.pale_crystal_chestplate.name=Pale Crystal Chestplate
 item.pale_crystal_leggings.name=Pale Crystal Leggings
 item.pale_crystal_boots.name=Pale Crystal Boots
+
+// Blocks
+tile.pale_crystal_block.name=Pale Crystal Block
+tile.fiery_crystal_block.name=Fiery Crystal Block
+tile.lavender_crystal_block.name=Lavender Crystal Block
+tile.icey_crystal_block.name=Icey Crystal Block
+tile.thunder_crystal_block.name=Thunder Crystal Block
+
+tile.copper_block.name=Copper Block
+tile.bronze_block.name=Bronze Block
+tile.steel_block.name=Steel Block
+tile.silver_block.name=Silver Block
+
+tile.marble_block.name=Marble Block
+tile.marble_bricks.name=Marble Bricks
+tile.marble_column.name=Marble Column
+
+// Ore
+tile.pale_crystal_ore.name=Pale Crystal Ore
+tile.fiery_crystal_ore.name=Fiery Crystal Ore
+tile.lavender_crystal_ore.name=Lavender Crystal Ore
+tile.icey_crystal_ore.name=Icey Crystal Ore
+tile.thunder_crystal_ore.name=Thunder Crystal Ore
+tile.copper_ore.name=Copper Ore
+tile.silver_ore.name=Silver Ore

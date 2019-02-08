@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "arcanegods:blocks/pale_crystal_block"
+        "all": "arcanegods:blocks/crystals/pale_crystal_block"
     }
 }

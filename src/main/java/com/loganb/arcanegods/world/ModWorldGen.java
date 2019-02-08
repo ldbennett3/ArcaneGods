@@ -25,6 +25,15 @@ public class ModWorldGen implements IWorldGenerator {
 		
 		// Test Crystal Ore generation
 		generateOre(ModBlocks.PALE_CRYSTAL_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 64, rand.nextInt(4) + 1, 20);
+		generateOre(ModBlocks.FIERY_CRYSTAL_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 64, rand.nextInt(3) + 1, 16);
+		generateOre(ModBlocks.LAVENDER_CRYSTAL_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 64, rand.nextInt(2) + 1, 10);
+		generateOre(ModBlocks.ICEY_CRYSTAL_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 64, rand.nextInt(3) + 1, 10);
+		generateOre(ModBlocks.THUNDER_CRYSTAL_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 64, rand.nextInt(3) + 1, 5);
+		
+		generateOre(ModBlocks.COPPER_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 100, rand.nextInt(6) + 1, 35);
+		generateOre(ModBlocks.SILVER_ORE.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 20, rand.nextInt(4) + 1, 5);
+		
+		generateOre(ModBlocks.MARBLE_BLOCK.getDefaultState(), world, rand, chunkX * 16, chunkZ * 16, 16, 130, rand.nextInt(45) + 10, 20);
 		
 	}
 	

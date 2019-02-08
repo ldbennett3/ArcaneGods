@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        " XX",
+        " XX"
+    ],
+   
+    "key":
+    {
+        "X":
+        {
+            "item": "arcanegods:marble_block"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:marble_bricks",
+        "count": 4
+    }
+}

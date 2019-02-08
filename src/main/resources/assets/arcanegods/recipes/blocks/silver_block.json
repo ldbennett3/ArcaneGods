@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "XXX",
+        "XXX",
+        "XXX"
+    ],
+   
+    "key":
+    {
+        "X":
+        {
+            "item": "arcanegods:silver_ingot"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:silver_block",
+        "count": 1
+    }
+}

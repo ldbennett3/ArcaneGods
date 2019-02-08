@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "arcanegods:blocks/crystals/thunder_crystal_block"
+    }
+}

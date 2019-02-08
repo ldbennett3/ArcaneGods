@@ -3,7 +3,7 @@
 	"credit": "Made by Logan B using Blockbench",
 	"textures": {
 		"1": "arcanegods:blocks/crystals/crystal_ore_stone",
-		"2": "arcanegods:blocks/crystals/pale_crystal_block",
+		"2": "arcanegods:blocks/crystals/thunder_crystal_block",
 		"particle": "blocks/stone"
 	},
 	"elements": [

@@ -1,0 +1,7 @@
+{
+   "parent": "block/cube_column",
+   "textures": {
+       "end": "arcanegods:blocks/marble_column_top",
+       "side": "arcanegods:blocks/marble_column"
+   }
+}

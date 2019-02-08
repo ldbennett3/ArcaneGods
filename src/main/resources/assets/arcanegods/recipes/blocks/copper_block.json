@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "XXX",
+        "XXX",
+        "XXX"
+    ],
+   
+    "key":
+    {
+        "X":
+        {
+            "item": "arcanegods:copper_ingot"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:copper_block",
+        "count": 1
+    }
+}

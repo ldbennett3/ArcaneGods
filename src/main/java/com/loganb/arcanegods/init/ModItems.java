@@ -32,11 +32,23 @@ public class ModItems {
 
 	// Materials
 	public static final ToolMaterial MATERIAL_PALE_CRYSTAL = EnumHelper.addToolMaterial("material_pale_crystal", 2, 300, 8.0F, 2.0F, 20);
+	
 	public static final ArmorMaterial ARMOR_MATERIAL_PALE_CRYSTAL = EnumHelper.addArmorMaterial("armor_material_pale_crystal", Reference.MOD_ID + ":pale_crystal", 11, new int[] {2,3,5,1}, 
 			30, SoundEvents.ITEM_ARMOR_EQUIP_GOLD, 0.0F);
 	
 	// Items
-	public static final Item PALE_CRYSTAL = new ItemBase("pale_crystal", Main.itemsTab);
+	public static final Item PALE_CRYSTAL     = new ItemBase("pale_crystal", Main.itemsTab);
+	public static final Item FIERY_CRYSTAL    = new ItemBase("fiery_crystal", Main.itemsTab);
+	public static final Item LAVENDER_CRYSTAL = new ItemBase("lavender_crystal", Main.itemsTab);
+	public static final Item ICEY_CRYSTAL     = new ItemBase("icey_crystal", Main.itemsTab);
+	public static final Item THUNDER_CRYSTAL  = new ItemBase("thunder_crystal", Main.itemsTab);
+	
+	public static final Item COPPER_INGOT     = new ItemBase("copper_ingot", Main.itemsTab);
+	public static final Item BRONZE_INGOT     = new ItemBase("bronze_ingot", Main.itemsTab);
+	public static final Item STEEL_INGOT      = new ItemBase("steel_ingot", Main.itemsTab);
+	public static final Item SILVER_INGOT     = new ItemBase("silver_ingot", Main.itemsTab);
+	
+	public static final Item NEUTRALIZING_POWDER = new ItemBase("neutralizing_powder", Main.itemsTab);
 	
 	// Tools
 	public static final ItemSword PALE_CRYSTAL_SWORD = new SwordBase("pale_crystal_sword", MATERIAL_PALE_CRYSTAL, Main.itemsTab);
