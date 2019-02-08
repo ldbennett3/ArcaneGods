@@ -30,12 +30,12 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class FurnaceBase extends BlockBase implements ITileEntityProvider {
+public class BrickFurnace extends BlockBase implements ITileEntityProvider {
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
 	public static final PropertyBool BURNING = PropertyBool.create("burning");
 	
-	public FurnaceBase(String name, Material material, CreativeTabs tab) {
+	public BrickFurnace(String name, Material material, CreativeTabs tab) {
 		super(name, material, tab);
 		setSoundType(SoundType.METAL);	
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(BURNING, false));
