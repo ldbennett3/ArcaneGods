@@ -5,6 +5,7 @@ import com.loganb.arcanegods.proxy.CommonProxy;
 import com.loganb.arcanegods.tabs.BlocksTab;
 import com.loganb.arcanegods.tabs.ItemsTab;
 import com.loganb.arcanegods.util.Reference;
+import com.loganb.arcanegods.util.handlers.RegistryHandler;
 import com.loganb.arcanegods.world.ModWorldGen;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -31,16 +32,16 @@ public class Main {
 	
 	@EventHandler
 	public static void PreInit(FMLPreInitializationEvent event) {
-		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+		RegistryHandler.preInitRegisters();
 	}
 	
 	@EventHandler
 	public static void init(FMLInitializationEvent event) {
-		ModRecipes.init();
+		RegistryHandler.initRegisters();
 	}
 	
 	@EventHandler
 	public static void PostInit(FMLPostInitializationEvent event) {
-		
+		RegistryHandler.postInitRegister();
 	}
 }

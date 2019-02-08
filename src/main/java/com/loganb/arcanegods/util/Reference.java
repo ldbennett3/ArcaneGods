@@ -9,4 +9,6 @@ public class Reference {
 	public static final String CLIENT_PROXY_CLASS = "com.loganb.arcanegods.proxy.ClientProxy";
 	public static final String COMMON_PROXY_CLASS = "com.loganb.arcanegods.proxy.CommonProxy";
 	
+	public static final int GUI_BRICK_FURNACE = 0;
+	
 }

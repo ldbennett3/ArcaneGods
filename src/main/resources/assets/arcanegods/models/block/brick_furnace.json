@@ -1,0 +1,12 @@
+{
+   "parent": "block/orientable",
+   "textures": {
+       "particle": "arcanegods:blocks/brick_furnace_front_off",
+       "up": "arcanegods:blocks/brick_furnace_front_off",
+       "down": "arcanegods:blocks/brick_furnace_front_off",
+       "north": "arcanegods:blocks/brick_furnace_front_off",
+       "east": "arcanegods:blocks/brick_furnace_side_1",
+       "south": "arcanegods:blocks/brick_furnace_side_3",
+       "west": "arcanegods:blocks/brick_furnace_side_2"
+   }
+}

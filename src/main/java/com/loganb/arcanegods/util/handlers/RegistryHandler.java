@@ -2,7 +2,10 @@ package com.loganb.arcanegods.util.handlers;
 
 import com.loganb.arcanegods.init.ModBlocks;
 import com.loganb.arcanegods.init.ModItems;
+import com.loganb.arcanegods.init.ModRecipes;
 import com.loganb.arcanegods.util.IHasModel;
+import com.loganb.arcanegods.util.compat.OreDictionaryCompat;
+import com.loganb.arcanegods.world.ModWorldGen;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -10,6 +13,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -41,6 +45,19 @@ public class RegistryHandler {
 				((IHasModel)block).registerModels();
 			}
 		}
+	}
+	
+	public static void preInitRegisters() {
+		GameRegistry.registerWorldGenerator(new ModWorldGen(), 3);
+	}
+	
+	public static void initRegisters() {
+		ModRecipes.init();
+		OreDictionaryCompat.registerOres();
+	}
+	
+	public static void postInitRegister() {
+	
 	}
 	
 }
