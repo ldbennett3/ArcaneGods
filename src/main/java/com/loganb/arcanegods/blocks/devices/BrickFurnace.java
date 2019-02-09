@@ -69,6 +69,12 @@ public class BrickFurnace extends BlockBase implements ITileEntityProvider {
 	}
 	
 	@Override
+	public int getLightValue(IBlockState state) {
+	    if (state.getValue(BURNING) == true) return 10;
+	    else return 0;
+	}
+	
+	@Override
 	public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
 		if (!worldIn.isRemote) {
 			IBlockState north = worldIn.getBlockState(pos.north());
