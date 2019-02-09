@@ -2,11 +2,11 @@
    "parent": "block/orientable",
    "textures": {
        "particle": "arcanegods:blocks/brick_furnace_front_off",
-       "up": "arcanegods:blocks/brick_furnace_front_off",
-       "down": "arcanegods:blocks/brick_furnace_front_off",
+       "up": "arcanegods:blocks/brick_furnace_top",
+       "down": "arcanegods:blocks/brick_furnace_top",
        "north": "arcanegods:blocks/brick_furnace_front_on",
-       "east": "arcanegods:blocks/brick_furnace_side_1",
-       "south": "arcanegods:blocks/brick_furnace_side_3",
-       "west": "arcanegods:blocks/brick_furnace_side_2"
+       "east": "arcanegods:blocks/brick_furnace_side",
+       "south": "arcanegods:blocks/brick_furnace_side",
+       "west": "arcanegods:blocks/brick_furnace_side"
    }
 }

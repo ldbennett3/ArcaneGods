@@ -1,5 +1,6 @@
 package com.loganb.arcanegods.util.handlers;
 
+import com.loganb.arcanegods.Main;
 import com.loganb.arcanegods.init.ModBlocks;
 import com.loganb.arcanegods.init.ModItems;
 import com.loganb.arcanegods.init.ModRecipes;
@@ -13,6 +14,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 @EventBusSubscriber
@@ -28,6 +30,7 @@ public class RegistryHandler {
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) 
 	{
 		event.getRegistry().registerAll(ModBlocks.BLOCKS.toArray(new Block[0]));
+		TileEntityHandler.registerTileEntities();
 	}
 	
 	@SubscribeEvent
@@ -54,6 +57,7 @@ public class RegistryHandler {
 	public static void initRegisters() {
 		ModRecipes.init();
 		OreDictionaryCompat.registerOres();
+		NetworkRegistry.INSTANCE.registerGuiHandler(Main.instance, new GuiHandler());
 	}
 	
 	public static void postInitRegister() {

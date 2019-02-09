@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "XXX",
+        "XFX",
+        "XXX"
+    ],
+   
+    "key":
+    {
+        "X":
+        {
+            "item": "minecraft:furnace"
+        },
+        "F":
+        {
+            "item": "minecraft:brick_block"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:brick_furnace",
+        "count": 1
+    }
+}

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.loganb.arcanegods.Main;
 import com.loganb.arcanegods.blocks.CrystalOreBase;
-import com.loganb.arcanegods.blocks.FurnaceBase;
+import com.loganb.arcanegods.blocks.devices.BrickFurnace;
 import com.loganb.arcanegods.blocks.BlockBase;
 import com.loganb.arcanegods.blocks.CrystalBlockBase;
 import net.minecraft.block.Block;
@@ -32,7 +32,7 @@ public class ModBlocks {
 	public static final Block MARBLE_COLUMN = new BlockBase("marble_column", Material.ROCK, Main.blocksTab);
 	
 	// Devices
-	public static final Block BRICK_FURNACE = new FurnaceBase("brick_furnace", Material.ROCK, Main.blocksTab);
+	public static final Block BRICK_FURNACE = new BrickFurnace("brick_furnace");
 	
 	// Ore
 	public static final Block PALE_CRYSTAL_ORE = new CrystalOreBase("pale_crystal_ore", Material.ROCK, Main.blocksTab, ModItems.PALE_CRYSTAL);

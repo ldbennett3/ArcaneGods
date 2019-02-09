@@ -16,6 +16,9 @@ item.silver_ingot.name=Silver Ingot
 
 item.neutralizing_powder.name=Neutralizing Powder
 
+// Containers
+arcanegods.container.brick_furnace=Brick Furnace
+
 // Tools
 item.pale_crystal_sword.name=Pale Crystal Sword
 
