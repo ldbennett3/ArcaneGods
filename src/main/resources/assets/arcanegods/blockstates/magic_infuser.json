@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "burning=false,facing=north": { "model": "arcanegods:magic_infuser" },
+        "burning=false,facing=east": { "model": "arcanegods:magic_infuser", "y": 90 },
+        "burning=false,facing=south": { "model": "arcanegods:magic_infuser", "y": 180 },
+        "burning=false,facing=west": { "model": "arcanegods:magic_infuser", "y": 270 },
+        "burning=true,facing=north": { "model": "arcanegods:magic_infuser_lit" },
+        "burning=true,facing=east": { "model": "arcanegods:magic_infuser_lit", "y": 90 },
+        "burning=true,facing=south": { "model": "arcanegods:magic_infuser_lit", "y": 180 },
+        "burning=true,facing=west": { "model": "arcanegods:magic_infuser_lit", "y": 270 }
+    }
+}

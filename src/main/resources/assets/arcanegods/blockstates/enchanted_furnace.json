@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "burning=false,facing=north": { "model": "arcanegods:enchanted_furnace" },
+        "burning=false,facing=east": { "model": "arcanegods:enchanted_furnace", "y": 90 },
+        "burning=false,facing=south": { "model": "arcanegods:enchanted_furnace", "y": 180 },
+        "burning=false,facing=west": { "model": "arcanegods:enchanted_furnace", "y": 270 },
+        "burning=true,facing=north": { "model": "arcanegods:enchanted_furnace_lit" },
+        "burning=true,facing=east": { "model": "arcanegods:enchanted_furnace_lit", "y": 90 },
+        "burning=true,facing=south": { "model": "arcanegods:enchanted_furnace_lit", "y": 180 },
+        "burning=true,facing=west": { "model": "arcanegods:enchanted_furnace_lit", "y": 270 }
+    }
+}

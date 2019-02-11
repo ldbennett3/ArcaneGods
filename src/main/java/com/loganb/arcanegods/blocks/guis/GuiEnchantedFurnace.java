@@ -1,23 +1,22 @@
 package com.loganb.arcanegods.blocks.guis;
 
-import com.loganb.arcanegods.blocks.containers.ContainerBrickFurnace;
-import com.loganb.arcanegods.blocks.tileentities.TileEntityBrickFurnace;
+import com.loganb.arcanegods.blocks.containers.ContainerEnchantedFurnace;
+import com.loganb.arcanegods.blocks.tileentities.TileEntityEnchantedFurnace;
 import com.loganb.arcanegods.util.Reference;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiBrickFurnace extends GuiContainer {
+public class GuiEnchantedFurnace extends GuiContainer {
 
-	private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/gui/brick_furnace.png");
+	private static final ResourceLocation TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/gui/enchanted_furnace.png");
 	private final InventoryPlayer player;
-	private final TileEntityBrickFurnace tileEntity;
+	private final TileEntityEnchantedFurnace tileEntity;
 	
-	public GuiBrickFurnace(InventoryPlayer player, TileEntityBrickFurnace tileEntity) {
-		super(new ContainerBrickFurnace(player, tileEntity));
+	public GuiEnchantedFurnace(InventoryPlayer player, TileEntityEnchantedFurnace tileEntity) {
+		super(new ContainerEnchantedFurnace(player, tileEntity));
 		this.player = player;
 		this.tileEntity = tileEntity;
 	}
@@ -42,7 +41,7 @@ public class GuiBrickFurnace extends GuiContainer {
 		this.mc.getTextureManager().bindTexture(TEXTURES);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		if(TileEntityBrickFurnace.isBurning(tileEntity)) {
+		if(TileEntityEnchantedFurnace.isBurning(tileEntity)) {
 			int k = this.getBurnLeftScaled(13);
 			this.drawTexturedModalRect(this.guiLeft + 56, this.guiTop + 36 + 12 - k, 176, 12 - k, 14, k + 1);
 		}

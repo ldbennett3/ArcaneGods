@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+   
+    "pattern":
+    [
+        "   ",
+        "ICI",
+        "BIB"
+    ],
+   
+    "key":
+    {
+        "B":
+        {
+            "item": "arcanegods:brick_furnace"
+        },
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "C":
+        {
+            "item": "minecraft:brick"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:large_capacity_furnace",
+        "count": 1
+    }
+}

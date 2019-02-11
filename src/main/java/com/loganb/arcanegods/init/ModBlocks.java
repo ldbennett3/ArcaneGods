@@ -4,10 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.loganb.arcanegods.Main;
-import com.loganb.arcanegods.blocks.CrystalOreBase;
-import com.loganb.arcanegods.blocks.devices.BrickFurnace;
 import com.loganb.arcanegods.blocks.BlockBase;
 import com.loganb.arcanegods.blocks.CrystalBlockBase;
+import com.loganb.arcanegods.blocks.CrystalOreBase;
+import com.loganb.arcanegods.blocks.devices.BrickFurnace;
+import com.loganb.arcanegods.blocks.devices.EnchantedFurnace;
+import com.loganb.arcanegods.blocks.devices.LargeCapacityFurnace;
+import com.loganb.arcanegods.blocks.devices.MagicInfuser;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -33,6 +37,9 @@ public class ModBlocks {
 	
 	// Devices
 	public static final Block BRICK_FURNACE = new BrickFurnace("brick_furnace");
+	public static final Block ENCHANTED_FURNACE = new EnchantedFurnace("enchanted_furnace");
+	public static final Block LARGE_CAPACITY_FURNACE = new LargeCapacityFurnace("large_capacity_furnace");
+	public static final Block MAGIC_INFUSER = new MagicInfuser("magic_infuser");
 	
 	// Ore
 	public static final Block PALE_CRYSTAL_ORE = new CrystalOreBase("pale_crystal_ore", Material.ROCK, Main.blocksTab, ModItems.PALE_CRYSTAL);

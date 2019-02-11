@@ -1,6 +1,6 @@
 package com.loganb.arcanegods.blocks.tileentities;
 
-import com.loganb.arcanegods.blocks.devices.BrickFurnace;
+import com.loganb.arcanegods.blocks.devices.EnchantedFurnace;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
@@ -30,7 +30,7 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityBrickFurnace extends TileEntity implements IInventory, ITickable {
+public class TileEntityEnchantedFurnace extends TileEntity implements IInventory, ITickable {
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
 	private String customName;
 	
@@ -41,11 +41,11 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 	private int cookTime;
 	private int totalCookTime;
 	
-	private final int cookingSpeed = 100;
+	private final int cookingSpeed = 50;
 	
 	@Override
 	public String getName() {
-		return this.hasCustomName() ? this.customName : "arcanegods.container.brick_furnace";
+		return this.hasCustomName() ? this.customName : "arcanegods.container.enchanted_furnace";
 	}
 	
 	@Override
@@ -215,7 +215,7 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 			}
 			if (flag != this.isBurning()) {
 				flag1 = true;
-				BrickFurnace.setState(this.isBurning(), this.world, this.pos);
+				EnchantedFurnace.setState(this.isBurning(), this.world, this.pos);
 			}
 		}
 		if (flag1)
@@ -380,7 +380,7 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 	}
 	
 	public String getGuiID() {
-		return "arcanegods:brick_furnace";
+		return "arcanegods:enchanted_furnace";
 	}
 	
 	@Override

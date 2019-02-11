@@ -1,0 +1,12 @@
+{
+   "parent": "block/orientable",
+   "textures": {
+       "particle": "arcanegods:blocks/enchanted_furnace/enchanted_furnace_front_off",
+       "up": "arcanegods:blocks/enchanted_furnace/enchanted_furnace_top",
+       "down": "arcanegods:blocks/enchanted_furnace/enchanted_furnace_top",
+       "north": "arcanegods:blocks/enchanted_furnace/enchanted_furnace_front_off",
+       "east": "arcanegods:blocks/enchanted_furnace/enchanted_furnace_side",
+       "south": "arcanegods:blocks/enchanted_furnace/enchanted_furnace_side",
+       "west": "arcanegods:blocks/enchanted_furnace/enchanted_furnace_side"
+   }
+}

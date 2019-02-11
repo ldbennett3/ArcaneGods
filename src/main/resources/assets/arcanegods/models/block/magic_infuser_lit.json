@@ -1,0 +1,12 @@
+{
+   "parent": "block/orientable",
+   "textures": {
+       "particle": "arcanegods:blocks/magic_infuser/magic_infuser/magic_infuser_front_off",
+       "up": "arcanegods:blocks/magic_infuser/magic_infuser_top",
+       "down": "arcanegods:blocks/magic_infuser/magic_infuser_top",
+       "north": "arcanegods:blocks/magic_infuser/magic_infuser_front_on",
+       "east": "arcanegods:blocks/magic_infuser/magic_infuser_side",
+       "south": "arcanegods:blocks/magic_infuser/magic_infuser_side",
+       "west": "arcanegods:blocks/magic_infuser/magic_infuser_side"
+   }
+}

@@ -1,9 +1,11 @@
 package com.loganb.arcanegods.blocks.tileentities;
 
-import com.loganb.arcanegods.blocks.devices.BrickFurnace;
+import java.util.List;
+
+import com.loganb.arcanegods.blocks.customrecipes.MagicInfuserRecipes;
+import com.loganb.arcanegods.blocks.devices.MagicInfuser;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -11,14 +13,12 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemBoat;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
@@ -30,22 +30,22 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityBrickFurnace extends TileEntity implements IInventory, ITickable {
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
+public class TileEntityMagicInfuser extends TileEntity implements IInventory, ITickable {
+	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
 	private String customName;
 	
-	public static final int INPUT_1 = 0, FUEL = 1, OUTPUT = 2;
+	public static final int INPUT_1 = 0, INPUT_2 = 1, FUEL = 2, OUTPUT = 3;
 	
 	private int burnTime;
 	private int currentBurnTime;
 	private int cookTime;
 	private int totalCookTime;
-	
-	private final int cookingSpeed = 100;
+
+	private final int cookingSpeed = 150;
 	
 	@Override
 	public String getName() {
-		return this.hasCustomName() ? this.customName : "arcanegods.container.brick_furnace";
+		return this.hasCustomName() ? this.customName : "arcanegods.container.magic_infuser";
 	}
 	
 	@Override
@@ -118,7 +118,7 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 		if (stack.getCount() > this.getInventoryStackLimit()) stack.setCount(this.getInventoryStackLimit());
 		if (index == 0 && index + 1 == 1 && !flag) {
 			ItemStack stack1 = (ItemStack)this.inventory.get(index + 1);
-			this.totalCookTime = this.getCookTime(stack);
+			this.totalCookTime = this.getCookTime(stack, stack1);
 			this.cookTime = 0;
 			this.markDirty();
 		}
@@ -177,7 +177,8 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 			ItemStack fuel = (ItemStack)this.inventory.get(FUEL);
 			
 			// Consume Fuel
-			if (this.isBurning() || !fuel.isEmpty() &&  !((ItemStack)this.inventory.get(INPUT_1)).isEmpty()) {
+			if (this.isBurning() || !fuel.isEmpty() && 
+					!( (((ItemStack)this.inventory.get(INPUT_1)).isEmpty()) || (((ItemStack)this.inventory.get(INPUT_2)).isEmpty())) ) {
 				if (!this.isBurning() && this.canAlloy()) {
 					this.burnTime = getItemBurnTime(fuel);
 					this.currentBurnTime = this.burnTime;
@@ -203,7 +204,7 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 					
 					if (this.cookTime == this.totalCookTime) {
 						this.cookTime = 0;
-						this.totalCookTime = this.getCookTime((ItemStack)this.inventory.get(INPUT_1));
+						this.totalCookTime = this.getCookTime((ItemStack)this.inventory.get(INPUT_1), (ItemStack)this.inventory.get(INPUT_2));
 						this.alloyItem();
 						flag1 = true;
 					}
@@ -215,23 +216,23 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 			}
 			if (flag != this.isBurning()) {
 				flag1 = true;
-				BrickFurnace.setState(this.isBurning(), this.world, this.pos);
+				MagicInfuser.setState(this.isBurning(), this.world, this.pos);
 			}
 		}
 		if (flag1)
 			this.markDirty();
 	}
 	
-	public int getCookTime(ItemStack input1) {
+	public int getCookTime(ItemStack input1, ItemStack input2) {
 		// Decreasing the value will increase the speed
 		// Increasing the value will decrease the speed
 		return cookingSpeed;
 	}
 	
 	private boolean canAlloy() {
-		if (((ItemStack)this.inventory.get(INPUT_1)).isEmpty()) return false;
+		if (((ItemStack)this.inventory.get(INPUT_1)).isEmpty() || ((ItemStack)this.inventory.get(INPUT_2)).isEmpty()) return false;
 		else {
-			ItemStack result = FurnaceRecipes.instance().getSmeltingResult((ItemStack)this.inventory.get(INPUT_1));
+			ItemStack result = MagicInfuserRecipes.getInstance().getInfuseResult((ItemStack)this.inventory.get(INPUT_1), (ItemStack)this.inventory.get(INPUT_2));
 			if (result.isEmpty()) return false;
 			else {
 				ItemStack output = (ItemStack)this.inventory.get(OUTPUT);
@@ -246,14 +247,19 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 	public void alloyItem() {
 		if (this.canAlloy()) {
 			ItemStack input1 = (ItemStack)this.inventory.get(INPUT_1);
-			ItemStack result = FurnaceRecipes.instance().getSmeltingResult((ItemStack)this.inventory.get(INPUT_1));
+			ItemStack input2 = (ItemStack)this.inventory.get(INPUT_2);
+			ItemStack result = MagicInfuserRecipes.getInstance().getInfuseResult((ItemStack)this.inventory.get(INPUT_1), (ItemStack)this.inventory.get(INPUT_2));
 			ItemStack output = (ItemStack)this.inventory.get(OUTPUT);
 			
-			if (output.isEmpty()) this.inventory.set(OUTPUT, result.copy());
-			else if (output.getItem() == result.getItem()) output.grow(result.getCount());
+			if (output.isEmpty()) {
+				this.inventory.set(OUTPUT, result.copy());
+			} else if (output.getItem() == result.getItem()) {
+				output.grow(result.getCount());
+			}
 			
 			// TODO: Maybe shrink the inputs by an amount determined by the recipe
 			input1.shrink(1);
+			input2.shrink(1);
 		}
 	}
 	
@@ -357,6 +363,11 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 		return getItemBurnTime(fuel) > 0;
 	}
 	
+	public static boolean isItemIngredient(ItemStack itemstack) {
+		List<Item> temp = MagicInfuserRecipes.getInstance().getIngredients();
+		return temp.contains(itemstack.getItem());
+	}
+	
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
 		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX() + 0.5D, 
@@ -372,15 +383,17 @@ public class TileEntityBrickFurnace extends TileEntity implements IInventory, IT
 	
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if (index == OUTPUT) return false;
-		else if (index != FUEL) return true;
-		else {
+		if (index == OUTPUT) {
+			return false;
+		} else if (index != FUEL) {
+			return true;
+		} else {
 			return isItemFuel(stack);
 		}
 	}
 	
 	public String getGuiID() {
-		return "arcanegods:brick_furnace";
+		return "arcanegods:magic_infuser";
 	}
 	
 	@Override

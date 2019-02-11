@@ -10,5 +10,8 @@ public class Reference {
 	public static final String COMMON_PROXY_CLASS = "com.loganb.arcanegods.proxy.CommonProxy";
 	
 	public static final int GUI_BRICK_FURNACE = 0;
+	public static final int GUI_ENCHANTED_FURNACE = 1;
+	public static final int GUI_LARGE_CAPACITY_FURNACE = 2;
+	public static final int GUI_MAGIC_INFUSER = 3;
 	
 }
