@@ -27,7 +27,15 @@ public class MagicInfuserRecipes {
 	}
 	
 	private MagicInfuserRecipes() {
-		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(Items.COAL), new ItemStack(ModItems.STEEL_INGOT), 5.0F);
+		addRecipe(new ItemStack(ModItems.FIERY_CRYSTAL), new ItemStack(ModItems.NEUTRALIZING_POWDER), new ItemStack(ModItems.PALE_CRYSTAL), 10.0F);
+		addRecipe(new ItemStack(ModItems.LAVENDER_CRYSTAL), new ItemStack(ModItems.NEUTRALIZING_POWDER), new ItemStack(ModItems.PALE_CRYSTAL), 10.0F);
+		addRecipe(new ItemStack(ModItems.THUNDER_CRYSTAL), new ItemStack(ModItems.NEUTRALIZING_POWDER), new ItemStack(ModItems.PALE_CRYSTAL), 10.0F);
+		addRecipe(new ItemStack(ModItems.ICEY_CRYSTAL), new ItemStack(ModItems.NEUTRALIZING_POWDER), new ItemStack(ModItems.PALE_CRYSTAL), 10.0F);
+		
+		addRecipe(new ItemStack(ModItems.PALE_CRYSTAL), new ItemStack(ModItems.FIERY_POWDER), new ItemStack(ModItems.FIERY_CRYSTAL), 10.0F);
+		addRecipe(new ItemStack(ModItems.PALE_CRYSTAL), new ItemStack(ModItems.LAVENDER_POWDER), new ItemStack(ModItems.LAVENDER_CRYSTAL), 10.0F);
+		addRecipe(new ItemStack(ModItems.PALE_CRYSTAL), new ItemStack(ModItems.THUNDER_POWDER), new ItemStack(ModItems.THUNDER_CRYSTAL), 10.0F);
+		addRecipe(new ItemStack(ModItems.PALE_CRYSTAL), new ItemStack(ModItems.ICEY_POWDER), new ItemStack(ModItems.ICEY_CRYSTAL), 10.0F);
 	}
 	
 	public void addRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {

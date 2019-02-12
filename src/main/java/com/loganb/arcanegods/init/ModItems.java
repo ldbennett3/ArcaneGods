@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.loganb.arcanegods.Main;
+import com.loganb.arcanegods.items.FuelItemBase;
 import com.loganb.arcanegods.items.ItemBase;
 import com.loganb.arcanegods.items.armor.ArmorBase;
 import com.loganb.arcanegods.items.tools.AxeBase;
@@ -49,6 +50,15 @@ public class ModItems {
 	public static final Item SILVER_INGOT     = new ItemBase("silver_ingot", Main.itemsTab);
 	
 	public static final Item NEUTRALIZING_POWDER = new ItemBase("neutralizing_powder", Main.itemsTab);
+	public static final Item FIERY_POWDER = new ItemBase("fiery_powder", Main.itemsTab);
+	public static final Item LAVENDER_POWDER = new ItemBase("lavender_powder", Main.itemsTab);
+	public static final Item ICEY_POWDER = new ItemBase("icey_powder", Main.itemsTab);
+	public static final Item THUNDER_POWDER = new ItemBase("thunder_powder", Main.itemsTab);
+	
+	public static final Item METALLURGIC_COAL = new FuelItemBase("metallurgic_coal", Main.itemsTab, 1600 * 2);
+	public static final Item ARCANE_COAL = new FuelItemBase("arcane_coal", Main.itemsTab, 1600 * 4);
+	public static final Item ALCHEMICAL_FUEL = new ItemBase("alchemical_fuel", Main.itemsTab);
+	public static final Item ENCHANCED_ALCHEMICAL_FUEL = new ItemBase("enhanced_alchemical_fuel", Main.itemsTab);
 	
 	// Tools
 	public static final ItemSword PALE_CRYSTAL_SWORD = new SwordBase("pale_crystal_sword", MATERIAL_PALE_CRYSTAL, Main.itemsTab);

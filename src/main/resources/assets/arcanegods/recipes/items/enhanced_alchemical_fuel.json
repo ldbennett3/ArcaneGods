@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shapeless",
+   
+    "pattern":
+    [
+        "   ",
+        "   ",
+        " FD"
+    ],
+   
+    "key":
+    {
+        "F":
+        {
+            "item": "arcanegods:alchemical_fuel"
+        },
+        "D":
+        {
+            "item": "arcanegods:thunder_powder"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:enhanced_alchemical_fuel",
+        "count": 1
+    }
+}

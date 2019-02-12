@@ -15,6 +15,15 @@ item.steel_ingot.name=Steel Ingot
 item.silver_ingot.name=Silver Ingot
 
 item.neutralizing_powder.name=Neutralizing Powder
+item.fiery_powder.name=Fiery Powder
+item.icey_powder.name=Icey Powder
+item.lavender_powder.name=Lavender Powder
+item.thunder_powder.name=Thunder Powder
+
+item.metallurgic_coal.name=Metallurgic Coal
+item.arcane_coal.name=Arcane Coal
+item.alchemical_fuel.name=Alchemical Fuel
+item.enhanced_alchemical_fuel.name=Enhanced Alchemical Fuel
 
 // Containers
 arcanegods.container.brick_furnace=Brick Furnace

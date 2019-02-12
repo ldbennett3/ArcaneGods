@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shapeless",
+   
+    "pattern":
+    [
+        "   ",
+        "   ",
+        " FD"
+    ],
+   
+    "key":
+    {
+        "F":
+        {
+            "item": "minecraft:coal"
+        },
+        "D":
+        {
+            "item": "arcanegods:neutralizing_powder"
+        }
+    },
+   
+    "result":
+    {
+        "item": "arcanegods:alchemical_fuel",
+        "count": 1
+    }
+}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.loganb.arcanegods.blocks.customrecipes.MagicInfuserRecipes;
 import com.loganb.arcanegods.blocks.devices.MagicInfuser;
+import com.loganb.arcanegods.init.ModItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -13,6 +14,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemBoat;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemHoe;
@@ -41,7 +43,7 @@ public class TileEntityMagicInfuser extends TileEntity implements IInventory, IT
 	private int cookTime;
 	private int totalCookTime;
 
-	private final int cookingSpeed = 150;
+	private final int cookingSpeed = 200;
 	
 	@Override
 	public String getName() {
@@ -263,99 +265,23 @@ public class TileEntityMagicInfuser extends TileEntity implements IInventory, IT
 		}
 	}
 	
-	public static int getItemBurnTime(ItemStack stack) {
-		if (stack.isEmpty())
+	public static int getItemBurnTime(ItemStack fuel) {
+		if (fuel.isEmpty())
         {
             return 0;
         }
         else
         {
-            int burnTime = net.minecraftforge.event.ForgeEventFactory.getItemBurnTime(stack);
-            if (burnTime >= 0) return burnTime;
-            Item item = stack.getItem();
-
-            if (item == Item.getItemFromBlock(Blocks.WOODEN_SLAB))
-            {
-                return 150;
-            }
-            else if (item == Item.getItemFromBlock(Blocks.WOOL))
-            {
-                return 100;
-            }
-            else if (item == Item.getItemFromBlock(Blocks.CARPET))
-            {
-                return 67;
-            }
-            else if (item == Item.getItemFromBlock(Blocks.LADDER))
-            {
-                return 300;
-            }
-            else if (item == Item.getItemFromBlock(Blocks.WOODEN_BUTTON))
-            {
-                return 100;
-            }
-            else if (Block.getBlockFromItem(item).getDefaultState().getMaterial() == Material.WOOD)
-            {
-                return 300;
-            }
-            else if (item == Item.getItemFromBlock(Blocks.COAL_BLOCK))
-            {
-                return 16000;
-            }
-            else if (item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName()))
-            {
-                return 200;
-            }
-            else if (item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName()))
-            {
-                return 200;
-            }
-            else if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName()))
-            {
-                return 200;
-            }
-            else if (item == Items.STICK)
-            {
-                return 100;
-            }
-            else if (item != Items.BOW && item != Items.FISHING_ROD)
-            {
-                if (item == Items.SIGN)
-                {
-                    return 200;
-                }
-                else if (item == Items.COAL)
-                {
-                    return 1600;
-                }
-                else if (item == Items.LAVA_BUCKET)
-                {
-                    return 20000;
-                }
-                else if (item != Item.getItemFromBlock(Blocks.SAPLING) && item != Items.BOWL)
-                {
-                    if (item == Items.BLAZE_ROD)
-                    {
-                        return 2400;
-                    }
-                    else if (item instanceof ItemDoor && item != Items.IRON_DOOR)
-                    {
-                        return 200;
-                    }
-                    else
-                    {
-                        return item instanceof ItemBoat ? 400 : 0;
-                    }
-                }
-                else
-                {
-                    return 100;
-                }
-            }
-            else
-            {
-                return 300;
-            }
+        	Item item = fuel.getItem();
+			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR) {
+				Block block = Block.getBlockFromItem(item);
+			}
+			
+			// Coal burns for 1600 at 200 speed. Cooks 8 items.
+			if (item == ModItems.ALCHEMICAL_FUEL) return 800;
+			if (item == ModItems.ENCHANCED_ALCHEMICAL_FUEL) return 1600;
+			
+			return 0; // Return 0 because only custom fuels work in this 
         }
 	}
 	

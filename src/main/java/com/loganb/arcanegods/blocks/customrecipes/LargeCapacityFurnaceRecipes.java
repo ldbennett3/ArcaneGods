@@ -29,6 +29,7 @@ public class LargeCapacityFurnaceRecipes {
 	private LargeCapacityFurnaceRecipes() {
 		addRecipe(new ItemStack(Items.IRON_INGOT), new ItemStack(Items.COAL), new ItemStack(ModItems.STEEL_INGOT), 5.0F);
 		addRecipe(new ItemStack(ModItems.COPPER_INGOT), new ItemStack(ModItems.STEEL_INGOT), new ItemStack(ModItems.BRONZE_INGOT), 10.0F);
+		addRecipe(new ItemStack(Items.COAL), new ItemStack(Items.GOLD_NUGGET), new ItemStack(ModItems.ARCANE_COAL), 10.0F);
 	}
 	
 	public void addRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
