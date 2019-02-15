@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "burning=false,facing=north": { "model": "arcanegods:grinder" },
+        "burning=false,facing=east": { "model": "arcanegods:grinder", "y": 90 },
+        "burning=false,facing=south": { "model": "arcanegods:grinder", "y": 180 },
+        "burning=false,facing=west": { "model": "arcanegods:grinder", "y": 270 },
+        "burning=true,facing=north": { "model": "arcanegods:grinder_lit" },
+        "burning=true,facing=east": { "model": "arcanegods:grinder_lit", "y": 90 },
+        "burning=true,facing=south": { "model": "arcanegods:grinder_lit", "y": 180 },
+        "burning=true,facing=west": { "model": "arcanegods:grinder_lit", "y": 270 }
+    }
+}

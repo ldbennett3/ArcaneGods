@@ -30,6 +30,7 @@ arcanegods.container.brick_furnace=Brick Furnace
 arcanegods.container.enchanted_furnace=Enchanted Furnace
 arcanegods.container.large_capacity_furnace=Large Capacity Furnace
 arcanegods.container.magic_infuser=Magic Infuser
+arcanegods.container.grinder=Grinder
 
 // Tools
 item.pale_crystal_sword.name=Pale Crystal Sword
@@ -60,6 +61,7 @@ tile.brick_furnace.name=Brick Furnace
 tile.enchanted_furnace.name=Enchanted Furnace
 tile.large_capacity_furnace.name=Large Capacity Furnace
 tile.magic_infuser.name=Magic Infuser
+tile.grinder.name=Grinder
 
 // Ore
 tile.pale_crystal_ore.name=Pale Crystal Ore

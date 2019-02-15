@@ -9,6 +9,7 @@ import com.loganb.arcanegods.blocks.CrystalBlockBase;
 import com.loganb.arcanegods.blocks.CrystalOreBase;
 import com.loganb.arcanegods.blocks.devices.BrickFurnace;
 import com.loganb.arcanegods.blocks.devices.EnchantedFurnace;
+import com.loganb.arcanegods.blocks.devices.Grinder;
 import com.loganb.arcanegods.blocks.devices.LargeCapacityFurnace;
 import com.loganb.arcanegods.blocks.devices.MagicInfuser;
 
@@ -40,6 +41,7 @@ public class ModBlocks {
 	public static final Block ENCHANTED_FURNACE = new EnchantedFurnace("enchanted_furnace");
 	public static final Block LARGE_CAPACITY_FURNACE = new LargeCapacityFurnace("large_capacity_furnace");
 	public static final Block MAGIC_INFUSER = new MagicInfuser("magic_infuser");
+	public static final Block GRINDER = new Grinder("grinder");
 	
 	// Ore
 	public static final Block PALE_CRYSTAL_ORE = new CrystalOreBase("pale_crystal_ore", Material.ROCK, Main.blocksTab, ModItems.PALE_CRYSTAL);

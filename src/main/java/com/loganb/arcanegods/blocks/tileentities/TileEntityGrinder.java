@@ -1,11 +1,9 @@
 package com.loganb.arcanegods.blocks.tileentities;
 
-import java.util.List;
-
-import com.loganb.arcanegods.blocks.customrecipes.LargeCapacityFurnaceRecipes;
-import com.loganb.arcanegods.blocks.devices.LargeCapacityFurnace;
+import com.loganb.arcanegods.blocks.devices.Grinder;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -13,12 +11,14 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemBoat;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
@@ -30,22 +30,22 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class TileEntityLargeCapacityFurnace extends TileEntity implements IInventory, ITickable {
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
+public class TileEntityGrinder extends TileEntity implements IInventory, ITickable {
+	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
 	private String customName;
 	
-	public static final int INPUT_1 = 0, INPUT_2 = 1, FUEL = 2, OUTPUT = 3;
+	public static final int INPUT_1 = 0, FUEL = 1, OUTPUT = 2;
 	
 	private int burnTime;
 	private int currentBurnTime;
 	private int cookTime;
 	private int totalCookTime;
-
-	private final int cookingSpeed = 250;
+	
+	private final int cookingSpeed = 100;
 	
 	@Override
 	public String getName() {
-		return this.hasCustomName() ? this.customName : "arcanegods.container.large_capacity_furnace";
+		return this.hasCustomName() ? this.customName : "arcanegods.container.grinder";
 	}
 	
 	@Override
@@ -118,7 +118,7 @@ public class TileEntityLargeCapacityFurnace extends TileEntity implements IInven
 		if (stack.getCount() > this.getInventoryStackLimit()) stack.setCount(this.getInventoryStackLimit());
 		if (index == 0 && index + 1 == 1 && !flag) {
 			ItemStack stack1 = (ItemStack)this.inventory.get(index + 1);
-			this.totalCookTime = this.getCookTime(stack, stack1);
+			this.totalCookTime = this.getCookTime(stack);
 			this.cookTime = 0;
 			this.markDirty();
 		}
@@ -177,8 +177,7 @@ public class TileEntityLargeCapacityFurnace extends TileEntity implements IInven
 			ItemStack fuel = (ItemStack)this.inventory.get(FUEL);
 			
 			// Consume Fuel
-			if (this.isBurning() || !fuel.isEmpty() && 
-					!( (((ItemStack)this.inventory.get(INPUT_1)).isEmpty()) || (((ItemStack)this.inventory.get(INPUT_2)).isEmpty())) ) {
+			if (this.isBurning() || !fuel.isEmpty() &&  !((ItemStack)this.inventory.get(INPUT_1)).isEmpty()) {
 				if (!this.isBurning() && this.canAlloy()) {
 					this.burnTime = getItemBurnTime(fuel);
 					this.currentBurnTime = this.burnTime;
@@ -204,7 +203,7 @@ public class TileEntityLargeCapacityFurnace extends TileEntity implements IInven
 					
 					if (this.cookTime == this.totalCookTime) {
 						this.cookTime = 0;
-						this.totalCookTime = this.getCookTime((ItemStack)this.inventory.get(INPUT_1), (ItemStack)this.inventory.get(INPUT_2));
+						this.totalCookTime = this.getCookTime((ItemStack)this.inventory.get(INPUT_1));
 						this.alloyItem();
 						flag1 = true;
 					}
@@ -216,24 +215,23 @@ public class TileEntityLargeCapacityFurnace extends TileEntity implements IInven
 			}
 			if (flag != this.isBurning()) {
 				flag1 = true;
-				LargeCapacityFurnace.setState(this.isBurning(), this.world, this.pos);
+				Grinder.setState(this.isBurning(), this.world, this.pos);
 			}
 		}
 		if (flag1)
 			this.markDirty();
 	}
 	
-	public int getCookTime(ItemStack input1, ItemStack input2) {
+	public int getCookTime(ItemStack input1) {
 		// Decreasing the value will increase the speed
 		// Increasing the value will decrease the speed
 		return cookingSpeed;
 	}
 	
 	private boolean canAlloy() {
-		if (((ItemStack)this.inventory.get(INPUT_1)).isEmpty() || ((ItemStack)this.inventory.get(INPUT_2)).isEmpty()) return false;
+		if (((ItemStack)this.inventory.get(INPUT_1)).isEmpty()) return false;
 		else {
-			ItemStack result = LargeCapacityFurnaceRecipes.getInstance()
-					.getAlloyResult((ItemStack)this.inventory.get(INPUT_1), (ItemStack)this.inventory.get(INPUT_2));
+			ItemStack result = FurnaceRecipes.instance().getSmeltingResult((ItemStack)this.inventory.get(INPUT_1));
 			if (result.isEmpty()) return false;
 			else {
 				ItemStack output = (ItemStack)this.inventory.get(OUTPUT);
@@ -248,19 +246,14 @@ public class TileEntityLargeCapacityFurnace extends TileEntity implements IInven
 	public void alloyItem() {
 		if (this.canAlloy()) {
 			ItemStack input1 = (ItemStack)this.inventory.get(INPUT_1);
-			ItemStack input2 = (ItemStack)this.inventory.get(INPUT_2);
-			ItemStack result = LargeCapacityFurnaceRecipes.getInstance().getAlloyResult((ItemStack)this.inventory.get(INPUT_1), (ItemStack)this.inventory.get(INPUT_2));
+			ItemStack result = FurnaceRecipes.instance().getSmeltingResult((ItemStack)this.inventory.get(INPUT_1));
 			ItemStack output = (ItemStack)this.inventory.get(OUTPUT);
 			
-			if (output.isEmpty()) {
-				this.inventory.set(OUTPUT, result.copy());
-			} else if (output.getItem() == result.getItem()) {
-				output.grow(result.getCount());
-			}
+			if (output.isEmpty()) this.inventory.set(OUTPUT, result.copy());
+			else if (output.getItem() == result.getItem()) output.grow(result.getCount());
 			
 			// TODO: Maybe shrink the inputs by an amount determined by the recipe
 			input1.shrink(1);
-			input2.shrink(1);
 		}
 	}
 	
@@ -364,11 +357,6 @@ public class TileEntityLargeCapacityFurnace extends TileEntity implements IInven
 		return getItemBurnTime(fuel) > 0;
 	}
 	
-	public static boolean isItemIngredient(ItemStack itemstack) {
-		List<Item> temp = LargeCapacityFurnaceRecipes.getInstance().getIngredients();
-		return temp.contains(itemstack.getItem());
-	}
-	
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
 		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX() + 0.5D, 
@@ -384,17 +372,15 @@ public class TileEntityLargeCapacityFurnace extends TileEntity implements IInven
 	
 	@Override
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		if (index == OUTPUT) {
-			return false;
-		} else if (index != FUEL) {
-			return true;
-		} else {
+		if (index == OUTPUT) return false;
+		else if (index != FUEL) return true;
+		else {
 			return isItemFuel(stack);
 		}
 	}
 	
 	public String getGuiID() {
-		return "arcanegods:large_capacity_furnace";
+		return "arcanegods:brick_furnace";
 	}
 	
 	@Override
