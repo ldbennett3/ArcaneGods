@@ -1,5 +1,7 @@
 package com.loganb.arcanegods.blocks.containers;
 
+import com.loganb.arcanegods.blocks.customrecipes.GrinderRecipes;
+import com.loganb.arcanegods.blocks.slots.SlotGrinderOutput;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityGrinder;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -17,13 +19,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerGrinder extends Container {
 	private final TileEntityGrinder tileEntity;
-	private int cookTime, totalCookTime, burnTime, currentBurnTime;
 	
 	public ContainerGrinder(InventoryPlayer player, TileEntityGrinder tileEntity) {
 		this.tileEntity = tileEntity;
-		this.addSlotToContainer(new Slot(tileEntity, TileEntityGrinder.INPUT_1, 56, 17));
-		this.addSlotToContainer(new SlotFurnaceFuel(tileEntity, TileEntityGrinder.FUEL, 56, 53));
-		this.addSlotToContainer(new SlotFurnaceOutput(player.player, tileEntity, TileEntityGrinder.OUTPUT, 116, 35));
+		this.addSlotToContainer(new Slot(tileEntity, TileEntityGrinder.INPUT, 53, 35));
+		this.addSlotToContainer(new SlotGrinderOutput(player.player, tileEntity, TileEntityGrinder.OUTPUT, 116, 35));
 		
 		// Get the player's inventory
 		for (int y = 0; y < 3; y++) {
@@ -45,37 +45,6 @@ public class ContainerGrinder extends Container {
 	}
 	
 	@Override
-	public void detectAndSendChanges() {
-		super.detectAndSendChanges();
-		
-		for (int i = 0; i < this.listeners.size(); i++) {
-			IContainerListener listener = (IContainerListener)this.listeners.get(i);
-			
-			if (this.cookTime != this.tileEntity.getField(TileEntityGrinder.FUEL)) 
-				listener.sendWindowProperty(this, TileEntityGrinder.FUEL, this.tileEntity.getField(TileEntityGrinder.FUEL));
-			
-			if (this.burnTime != this.tileEntity.getField(TileEntityGrinder.INPUT_1)) 
-				listener.sendWindowProperty(this, TileEntityGrinder.INPUT_1, this.tileEntity.getField(TileEntityGrinder.INPUT_1));
-			
-			if (this.currentBurnTime != this.tileEntity.getField(TileEntityGrinder.INPUT_1)) 
-				listener.sendWindowProperty(this, TileEntityGrinder.INPUT_1, this.tileEntity.getField(TileEntityGrinder.INPUT_1));
-			if (this.totalCookTime != this.tileEntity.getField(TileEntityGrinder.OUTPUT)) 
-				listener.sendWindowProperty(this, TileEntityGrinder.OUTPUT, this.tileEntity.getField(TileEntityGrinder.OUTPUT));
-		}
-		
-		this.cookTime = this.tileEntity.getField(TileEntityGrinder.FUEL);
-		this.burnTime = this.tileEntity.getField(TileEntityGrinder.INPUT_1);
-		this.currentBurnTime = this.tileEntity.getField(TileEntityGrinder.INPUT_1);
-		this.totalCookTime = this.tileEntity.getField(TileEntityGrinder.OUTPUT);
-	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void updateProgressBar(int id, int data) {
-		this.tileEntity.setField(id, data);
-	}
-	
-	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return this.tileEntity.isUsableByPlayer(playerIn);
 	}
@@ -90,44 +59,37 @@ public class ContainerGrinder extends Container {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
 
-            if (index == 2)
+            if (index == TileEntityGrinder.OUTPUT)
             {
-                if (!this.mergeItemStack(itemstack1, 3, 39, true))
+                if (!this.mergeItemStack(itemstack1, 2, 38, true))
                 {
                     return ItemStack.EMPTY;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
             }
-            else if (index != 1 && index != 0)
+            else if (index != TileEntityGrinder.INPUT)
             {
-                if (!FurnaceRecipes.instance().getSmeltingResult(itemstack1).isEmpty())
+                if (!GrinderRecipes.getInstance().getGrindResult(itemstack1).isEmpty()) // The recipe IS valid
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {
                         return ItemStack.EMPTY;
                     }
                 }
-                else if (TileEntityFurnace.isItemFuel(itemstack1))
+                else if (index >= 2 && index < 29)
                 {
-                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
+                    if (!this.mergeItemStack(itemstack1, 29, 38, false))
                     {
                         return ItemStack.EMPTY;
                     }
                 }
-                else if (index >= 3 && index < 30)
-                {
-                    if (!this.mergeItemStack(itemstack1, 30, 39, false))
-                    {
-                        return ItemStack.EMPTY;
-                    }
-                }
-                else if (index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
+                else if (index >= 29 && index < 38 && !this.mergeItemStack(itemstack1, 2, 29, false))
                 {
                     return ItemStack.EMPTY;
                 }
             }
-            else if (!this.mergeItemStack(itemstack1, 3, 39, false))
+            else if (!this.mergeItemStack(itemstack1, 2, 38, false))
             {
                 return ItemStack.EMPTY;
             }

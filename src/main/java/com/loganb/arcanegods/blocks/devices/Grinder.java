@@ -39,13 +39,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class Grinder extends BlockBase implements ITileEntityProvider {
 
 	public static final PropertyDirection FACING = BlockHorizontal.FACING;
-	public static final PropertyBool BURNING = PropertyBool.create("burning");
 	
 	public Grinder(String name) {
 		super(name, Material.ROCK, Main.blocksTab);
 		setSoundType(SoundType.METAL);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		this.setDefaultState(this.blockState.getBaseState().withProperty(BURNING, false));
 	}
 	
 	@Override
@@ -66,12 +64,6 @@ public class Grinder extends BlockBase implements ITileEntityProvider {
 		}
 		
 		return true;
-	}
-	
-	@Override
-	public int getLightValue(IBlockState state) {
-	    if (state.getValue(BURNING) == true) return 10;
-	    else return 0;
 	}
 	
 	@Override
@@ -98,9 +90,9 @@ public class Grinder extends BlockBase implements ITileEntityProvider {
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 		
 		if (active) {
-			worldIn.setBlockState(pos, ModBlocks.GRINDER.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, true), 1 | 2);
+			worldIn.setBlockState(pos, ModBlocks.GRINDER.getDefaultState().withProperty(FACING, state.getValue(FACING)), 1 | 2);
 		} else {
-			worldIn.setBlockState(pos, ModBlocks.GRINDER.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BURNING, false), 1 | 2);
+			worldIn.setBlockState(pos, ModBlocks.GRINDER.getDefaultState().withProperty(FACING, state.getValue(FACING)), 1 | 2);
 		}
 		
 		if (tileEntity != null) {
@@ -152,7 +144,7 @@ public class Grinder extends BlockBase implements ITileEntityProvider {
 	 */
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {BURNING, FACING });
+		return new BlockStateContainer(this, new IProperty[] {FACING});
 	}
 	
 	@Override
@@ -166,44 +158,5 @@ public class Grinder extends BlockBase implements ITileEntityProvider {
 	public int getMetaFromState(IBlockState state) {
 		return ((EnumFacing)state.getValue(FACING)).getIndex();
 	}
-	
-	@SideOnly(Side.CLIENT)
-    @SuppressWarnings("incomplete-switch")
-    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
-    {
-        if (TileEntityGrinder.isBurning(((TileEntityGrinder)worldIn.getTileEntity(pos))))
-        {
-            EnumFacing enumfacing = (EnumFacing)stateIn.getValue(FACING);
-            double d0 = (double)pos.getX() + 0.5D;
-            double d1 = (double)pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
-            double d2 = (double)pos.getZ() + 0.5D;
-            double d3 = 0.52D;
-            double d4 = rand.nextDouble() * 0.6D - 0.3D;
-
-            if (rand.nextDouble() < 0.1D)
-            {
-                worldIn.playSound((double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
-            }
-
-            switch (enumfacing)
-            {
-                case WEST:
-                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
-                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 - 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
-                    break;
-                case EAST:
-                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
-                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + 0.52D, d1, d2 + d4, 0.0D, 0.0D, 0.0D);
-                    break;
-                case NORTH:
-                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D);
-                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 - 0.52D, 0.0D, 0.0D, 0.0D);
-                    break;
-                case SOUTH:
-                    worldIn.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D);
-                    worldIn.spawnParticle(EnumParticleTypes.FLAME, d0 + d4, d1, d2 + 0.52D, 0.0D, 0.0D, 0.0D);
-            }
-        }
-    }
 	
 }
