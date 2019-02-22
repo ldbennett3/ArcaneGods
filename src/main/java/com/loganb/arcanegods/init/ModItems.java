@@ -7,23 +7,14 @@ import com.loganb.arcanegods.Main;
 import com.loganb.arcanegods.items.FuelItemBase;
 import com.loganb.arcanegods.items.ItemBase;
 import com.loganb.arcanegods.items.armor.ArmorBase;
-import com.loganb.arcanegods.items.tools.AxeBase;
-import com.loganb.arcanegods.items.tools.HoeBase;
-import com.loganb.arcanegods.items.tools.PickaxeBase;
-import com.loganb.arcanegods.items.tools.ShovelBase;
 import com.loganb.arcanegods.items.tools.SwordBase;
 import com.loganb.arcanegods.util.Reference;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.item.ItemAxe;
-import net.minecraft.item.ItemHoe;
-import net.minecraft.item.ItemPickaxe;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemSword;
 import net.minecraftforge.common.util.EnumHelper;
 

@@ -245,7 +245,7 @@ public class TileEntityGrinder extends TileEntity implements IInventory, ITickab
 	}
 	
 	public String getGuiID() {
-		return "arcanegods:brick_furnace";
+		return "arcanegods:grinder";
 	}
 	
 	@Override
