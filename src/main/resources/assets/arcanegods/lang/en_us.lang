@@ -25,6 +25,8 @@ item.arcane_coal.name=Arcane Coal
 item.alchemical_fuel.name=Alchemical Fuel
 item.enhanced_alchemical_fuel.name=Enhanced Alchemical Fuel
 
+item.untranslated_custom_book.name=Untranslated Custom Book WIP
+
 // Containers
 arcanegods.container.brick_furnace=Brick Furnace
 arcanegods.container.enchanted_furnace=Enchanted Furnace

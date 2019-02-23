@@ -14,5 +14,6 @@ public class Reference {
 	public static final int GUI_LARGE_CAPACITY_FURNACE = 2;
 	public static final int GUI_MAGIC_INFUSER = 3;
 	public static final int GUI_GRINDER = 4;
+	public static final int GUI_CUSTOM_BOOK = 5;
 	
 }

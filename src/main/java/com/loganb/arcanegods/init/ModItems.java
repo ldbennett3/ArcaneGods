@@ -6,6 +6,7 @@ import java.util.List;
 import com.loganb.arcanegods.Main;
 import com.loganb.arcanegods.items.FuelItemBase;
 import com.loganb.arcanegods.items.ItemBase;
+import com.loganb.arcanegods.items.ItemCustomBook;
 import com.loganb.arcanegods.items.armor.ArmorBase;
 import com.loganb.arcanegods.items.tools.SwordBase;
 import com.loganb.arcanegods.util.Reference;
@@ -15,7 +16,10 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class ModItems {
@@ -51,6 +55,8 @@ public class ModItems {
 	public static final Item ALCHEMICAL_FUEL = new ItemBase("alchemical_fuel", Main.itemsTab);
 	public static final Item ENCHANCED_ALCHEMICAL_FUEL = new ItemBase("enhanced_alchemical_fuel", Main.itemsTab);
 	
+	public static final Item UNTRANSLATED_TEST_BOOK = new ItemCustomBook("untranslated_custom_book", Main.itemsTab);
+	
 	// Tools
 	public static final ItemSword PALE_CRYSTAL_SWORD = new SwordBase("pale_crystal_sword", MATERIAL_PALE_CRYSTAL, Main.itemsTab);
 	
@@ -60,5 +66,6 @@ public class ModItems {
 	public static final Item PALE_CRYSTAL_CHESTPLATE = new ArmorBase("pale_crystal_chestplate", ARMOR_MATERIAL_PALE_CRYSTAL, 1, EntityEquipmentSlot.CHEST, Main.itemsTab);
 	public static final Item PALE_CRYSTAL_LEGGINGS = new ArmorBase("pale_crystal_leggings", ARMOR_MATERIAL_PALE_CRYSTAL, 2, EntityEquipmentSlot.LEGS, Main.itemsTab);
 	public static final Item PALE_CRYSTAL_BOOTS = new ArmorBase("pale_crystal_boots", ARMOR_MATERIAL_PALE_CRYSTAL, 1, EntityEquipmentSlot.FEET, Main.itemsTab);
+
 	
 }

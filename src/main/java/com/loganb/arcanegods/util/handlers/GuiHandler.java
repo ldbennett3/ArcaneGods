@@ -15,6 +15,7 @@ import com.loganb.arcanegods.blocks.tileentities.TileEntityEnchantedFurnace;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityGrinder;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityLargeCapacityFurnace;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityMagicInfuser;
+import com.loganb.arcanegods.items.guis.GuiCustomBookScreen;
 import com.loganb.arcanegods.util.Reference;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,6 +42,7 @@ public class GuiHandler implements IGuiHandler {
 		if(ID == Reference.GUI_LARGE_CAPACITY_FURNACE) return new GuiLargeCapacityFurnace(player.inventory, (TileEntityLargeCapacityFurnace)world.getTileEntity(new BlockPos(x, y, z)));
 		if(ID == Reference.GUI_MAGIC_INFUSER) return new GuiMagicInfuser(player.inventory, (TileEntityMagicInfuser)world.getTileEntity(new BlockPos(x, y, z)));
 		if(ID == Reference.GUI_GRINDER) return new GuiGrinder(player.inventory, (TileEntityGrinder)world.getTileEntity(new BlockPos(x, y, z)));
+		if(ID == Reference.GUI_CUSTOM_BOOK) return new GuiCustomBookScreen(player, player.getHeldItemMainhand());
 		return null;
 	}
 
