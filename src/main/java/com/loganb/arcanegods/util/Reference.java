@@ -19,4 +19,19 @@ public class Reference {
 	// the GUI is universal across all books and dynamically made from item class contents
 	public static final int GUI_TESTING_BOOK_1 = 50;
 	
+	// Book language enum. Name is used for description as well as the letter description
+	public static enum BOOK_LANGUAGE {
+		DRACONIC("vertical and scratchy"),
+		CASMODIAN("almost like cyrollic"),
+		ELVISH("curvy and fluid"),
+		ORCISH("sloppy and jagged"),
+		PORALIAN("made of slanted lines");
+		
+		public final String letterDescription;
+		
+		private BOOK_LANGUAGE(String letterDescription) {
+			this.letterDescription = letterDescription;
+		}
+	};
+	
 }

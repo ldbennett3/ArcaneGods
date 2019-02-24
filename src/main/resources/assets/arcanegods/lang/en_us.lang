@@ -25,7 +25,19 @@ item.arcane_coal.name=Arcane Coal
 item.alchemical_fuel.name=Alchemical Fuel
 item.enhanced_alchemical_fuel.name=Enhanced Alchemical Fuel
 
-item.untranslated_custom_book.name=Untranslated Custom Book WIP
+item.untranslated_custom_book.name=Untranslated Custom Book Example
+
+item.untranslated_draconic.name=Untranslated Book
+item.untranslated_casmodian.name=Untranslated Book
+item.untranslated_elvish.name=Untranslated Book
+item.untranslated_orchish.name=Untranslated Book
+item.untranslated_poralian.name=Untranslated Book
+
+item.translation_tome_casmodian.name=Translation Tome
+item.translation_tome_draconic.name=Translation Tome
+item.translation_tome_elvish.name=Translation Tome
+item.translation_tome_orcish.name=Translation Tome
+item.translation_tome_poralian.name=Translation Tome
 
 // Containers
 arcanegods.container.brick_furnace=Brick Furnace

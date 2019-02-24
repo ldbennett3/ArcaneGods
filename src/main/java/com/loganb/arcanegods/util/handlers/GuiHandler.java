@@ -15,7 +15,7 @@ import com.loganb.arcanegods.blocks.tileentities.TileEntityEnchantedFurnace;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityGrinder;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityLargeCapacityFurnace;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityMagicInfuser;
-import com.loganb.arcanegods.items.books.ItemTestingBookOne;
+import com.loganb.arcanegods.items.books.UntranslatedCustomBook;
 import com.loganb.arcanegods.items.guis.GuiCustomBookScreen;
 import com.loganb.arcanegods.util.Reference;
 
@@ -46,7 +46,7 @@ public class GuiHandler implements IGuiHandler {
 		if(ID == Reference.GUI_GRINDER) return new GuiGrinder(player.inventory, (TileEntityGrinder)world.getTileEntity(new BlockPos(x, y, z)));
 		
 		// Books
-		if(ID == Reference.GUI_TESTING_BOOK_1) return new GuiCustomBookScreen(player, ItemTestingBookOne.getPages(), ItemTestingBookOne.getImages());
+		if(ID == Reference.GUI_TESTING_BOOK_1) return new GuiCustomBookScreen(player, UntranslatedCustomBook.getPages(), UntranslatedCustomBook.getImages());
 		
 		return null;
 	}

@@ -20,7 +20,6 @@ public class GuiCustomBookScreen extends GuiScreen {
 
 	// Resource locations
 	public static final ResourceLocation BOOK_GUI_TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/gui/book.png");
-	public static final ResourceLocation CLOSE_BUTTON_TEXTURES = new ResourceLocation(Reference.MOD_ID + ":textures/gui/close_button.png");
 	private int bookTextureSize = 250;
 	
 	// Book information
@@ -53,48 +52,53 @@ public class GuiCustomBookScreen extends GuiScreen {
 	@Override
 	public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
+		
+		this.buttonList.clear();
+		
 		// Draw the book background
-				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		        this.mc.getTextureManager().bindTexture(BOOK_GUI_TEXTURES);
-		        int posX = (this.width / 2) - (bookTextureSize / 2);
-		        int posY = 16;
-		        this.drawTexturedModalRect(posX, posY, 0, 0, bookTextureSize, 376 / 2);
-		        
-		        // Positioning for text
-		    	int leftPageTextStart = (this.width / 2) - (bookTextureSize / 2) + 18;
-		    	int rightPageTextStart = (this.width / 2) + 14;
-		    	int topTextStart = 44;
-		    	
-		        this.fontRenderer.drawSplitString(pages[currentPage].getLeftText(), leftPageTextStart, topTextStart, bookTextureSize / 2 - 24, 0);
-		        this.fontRenderer.drawSplitString(pages[currentPage].getRightText(), rightPageTextStart, topTextStart, bookTextureSize / 2 - 28, 0);
-		        
-		        // Positioning for buttons
-		    	int closeButtonX = (this.width / 2) + (bookTextureSize / 2) - 32;
-		    	int closeButtonY = 28;
-		    	
-		        this.closeButton = this.addButton(new CloseButton(0, closeButtonX, closeButtonY));
-		        
-		        int previousButtonX = (this.width / 2) - (bookTextureSize / 2) + 12;
-		        int nextButtonX     = (this.width / 2) + (bookTextureSize / 2) - 34;
-		        int buttonY = 167;
-		        
-		        this.previousPageButton = this.addButton(new NextPageButton(1, previousButtonX, buttonY, true));
-		        this.nextPageButton = this.addButton(new NextPageButton(2, nextButtonX, buttonY, false));
-		        
-		        if(currentPage >= pages.length - 1) {
-		        	nextPageButton.visible = false;
-		        }
-		        if(currentPage <= 0) {
-		        	previousPageButton.visible = false;
-		        }
-		    
-		        // Draw all the images
-		        drawImages();
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+        this.mc.getTextureManager().bindTexture(BOOK_GUI_TEXTURES);
+        int posX = (this.width / 2) - (bookTextureSize / 2);
+        int posY = 16;
+        this.drawTexturedModalRect(posX, posY, 0, 0, bookTextureSize, 376 / 2);
+        
+        // Positioning for text
+    	int leftPageTextStart = (this.width / 2) - (bookTextureSize / 2) + 18;
+    	int rightPageTextStart = (this.width / 2) + 14;
+    	int topTextStart = 44;
+    	
+        this.fontRenderer.drawSplitString(pages[currentPage].getLeftText(), leftPageTextStart, topTextStart, bookTextureSize / 2 - 24, 0);
+        this.fontRenderer.drawSplitString(pages[currentPage].getRightText(), rightPageTextStart, topTextStart, bookTextureSize / 2 - 28, 0);
+        
+        // Positioning for buttons
+    	int closeButtonX = (this.width / 2) + (bookTextureSize / 2) - 32;
+    	int closeButtonY = 28;
+    	
+        this.closeButton = this.addButton(new CloseButton(0, closeButtonX, closeButtonY));
+        
+        int previousButtonX = (this.width / 2) - (bookTextureSize / 2) + 12;
+        int nextButtonX     = (this.width / 2) + (bookTextureSize / 2) - 34;
+        int buttonY = 167;
+        
+        this.previousPageButton = this.addButton(new NextPageButton(1, previousButtonX, buttonY, true));
+        this.nextPageButton = this.addButton(new NextPageButton(2, nextButtonX, buttonY, false));
+        
+        if(currentPage >= pages.length - 1) {
+        	nextPageButton.visible = false;
+        }
+        if(currentPage <= 0) {
+        	previousPageButton.visible = false;
+        }
+    
+        // Draw all the images
+        drawImages();
         
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 	
 	public void updateBook() {
+		
+		this.buttonList.clear();
 		
 		System.out.println("\n\nSHowing screen for page " + currentPage);
 		
