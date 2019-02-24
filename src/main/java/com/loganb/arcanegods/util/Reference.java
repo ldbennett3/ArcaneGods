@@ -14,6 +14,9 @@ public class Reference {
 	public static final int GUI_LARGE_CAPACITY_FURNACE = 2;
 	public static final int GUI_MAGIC_INFUSER = 3;
 	public static final int GUI_GRINDER = 4;
-	public static final int GUI_CUSTOM_BOOK = 5;
+	
+	// GUI's for books. Contents declared in the item class, ID does nothing more than assign the class. 
+	// the GUI is universal across all books and dynamically made from item class contents
+	public static final int GUI_TESTING_BOOK_1 = 50;
 	
 }

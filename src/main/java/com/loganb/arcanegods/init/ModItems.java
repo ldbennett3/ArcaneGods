@@ -6,8 +6,8 @@ import java.util.List;
 import com.loganb.arcanegods.Main;
 import com.loganb.arcanegods.items.FuelItemBase;
 import com.loganb.arcanegods.items.ItemBase;
-import com.loganb.arcanegods.items.ItemCustomBook;
 import com.loganb.arcanegods.items.armor.ArmorBase;
+import com.loganb.arcanegods.items.books.ItemTestingBookOne;
 import com.loganb.arcanegods.items.tools.SwordBase;
 import com.loganb.arcanegods.util.Reference;
 
@@ -55,7 +55,7 @@ public class ModItems {
 	public static final Item ALCHEMICAL_FUEL = new ItemBase("alchemical_fuel", Main.itemsTab);
 	public static final Item ENCHANCED_ALCHEMICAL_FUEL = new ItemBase("enhanced_alchemical_fuel", Main.itemsTab);
 	
-	public static final Item UNTRANSLATED_TEST_BOOK = new ItemCustomBook("untranslated_custom_book", Main.itemsTab);
+	public static final Item UNTRANSLATED_TEST_BOOK = new ItemTestingBookOne("untranslated_custom_book", Main.itemsTab);
 	
 	// Tools
 	public static final ItemSword PALE_CRYSTAL_SWORD = new SwordBase("pale_crystal_sword", MATERIAL_PALE_CRYSTAL, Main.itemsTab);
