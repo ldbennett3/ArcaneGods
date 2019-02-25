@@ -1,0 +1,12 @@
+{
+   "parent": "block/orientable",
+   "textures": {
+       "particle": "arcanegods:blocks/translation_table/translation_table_side",
+       "up": "arcanegods:blocks/translation_table/translation_table_top",
+       "down": "arcanegods:blocks/translation_table/translation_table_bottom",
+       "north": "arcanegods:blocks/translation_table/translation_table_side",
+       "east": "arcanegods:blocks/translation_table/translation_table_side",
+       "south": "arcanegods:blocks/translation_table/translation_table_side",
+       "west": "arcanegods:blocks/translation_table/translation_table_side"
+   }
+}

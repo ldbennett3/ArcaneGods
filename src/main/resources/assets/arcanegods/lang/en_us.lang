@@ -45,6 +45,7 @@ arcanegods.container.enchanted_furnace=Enchanted Furnace
 arcanegods.container.large_capacity_furnace=Large Capacity Furnace
 arcanegods.container.magic_infuser=Magic Infuser
 arcanegods.container.grinder=Grinder
+arcanegods.container.translation_table=Translation Table
 
 // Tools
 item.pale_crystal_sword.name=Pale Crystal Sword
@@ -76,6 +77,7 @@ tile.enchanted_furnace.name=Enchanted Furnace
 tile.large_capacity_furnace.name=Large Capacity Furnace
 tile.magic_infuser.name=Magic Infuser
 tile.grinder.name=Grinder
+tile.translation_table.name=Translation Table
 
 // Ore
 tile.pale_crystal_ore.name=Pale Crystal Ore

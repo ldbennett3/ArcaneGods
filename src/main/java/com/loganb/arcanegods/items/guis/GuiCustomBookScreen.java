@@ -100,8 +100,6 @@ public class GuiCustomBookScreen extends GuiScreen {
 		
 		this.buttonList.clear();
 		
-		System.out.println("\n\nSHowing screen for page " + currentPage);
-		
 		// Draw the book background
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(BOOK_GUI_TEXTURES);

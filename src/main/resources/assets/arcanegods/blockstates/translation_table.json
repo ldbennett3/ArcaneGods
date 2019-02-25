@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "arcanegods:translation_table" },
+        "facing=east": { "model": "arcanegods:translation_table", "y": 90 },
+        "facing=south": { "model": "arcanegods:translation_table", "y": 180 },
+        "facing=west": { "model": "arcanegods:translation_table", "y": 270 }
+    }
+}
