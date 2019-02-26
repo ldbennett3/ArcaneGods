@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.loganb.arcanegods.blocks.customrecipes.GrinderRecipes;
 import com.loganb.arcanegods.blocks.devices.Grinder;
+import com.loganb.arcanegods.items.books.TranslationTomeBase;
+import com.loganb.arcanegods.items.books.UntranslatedBookBase;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
@@ -167,21 +169,14 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 		}
 	}
 	
+	public static boolean isItemTome(ItemStack stack) {
+		return stack.getItem() instanceof TranslationTomeBase;
+	}
+	
 	@Override
 	public boolean isUsableByPlayer(EntityPlayer player) {
 		return this.world.getTileEntity(this.pos) != this ? false : player.getDistanceSq((double)this.pos.getX() + 0.5D, 
 				(double)this.pos.getY() + 0.5D, (double)this.pos.getZ() + 0.5D) <= 64.0D;
-	}
-	
-	/**
-	 * Check list of ingredients for grinder recipes and return if the item stack
-	 * given contains the item thats considered an ingredient 
-	 * @param stack
-	 * @return Whether the item is an ingredient or not
-	 */
-	public boolean isItemIngredient(ItemStack stack) {
-		
-		return false;
 	}
 	
 	@Override
@@ -195,9 +190,11 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 	public boolean isItemValidForSlot(int index, ItemStack stack) {
 		if (index == OUTPUT) {
 			return false;
+		} else if (index == INPUT_1) {
+			return stack.getItem() instanceof UntranslatedBookBase;
 		} else {
-			return isItemIngredient(stack);
-		}
+			return stack.getItem() instanceof TranslationTomeBase;
+ 		}
 	}
 	
 	public String getGuiID() {

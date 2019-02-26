@@ -1,7 +1,9 @@
 package com.loganb.arcanegods.blocks.containers;
 
+import com.loganb.arcanegods.blocks.customrecipes.TranslationTableRecipes;
+import com.loganb.arcanegods.blocks.slots.SlotTranslationTableBookInput;
 import com.loganb.arcanegods.blocks.slots.SlotTranslationTableOutput;
-import com.loganb.arcanegods.blocks.tileentities.TileEntityTranslationTable;
+import com.loganb.arcanegods.blocks.slots.SlotTranslationTableTomeInput;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityTranslationTable;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,14 +12,15 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityFurnace;
 
 public class ContainerTranslationTable extends Container {
 	private final TileEntityTranslationTable tileEntity;
 	
 	public ContainerTranslationTable(InventoryPlayer player, TileEntityTranslationTable tileEntity2) {
 		this.tileEntity = tileEntity2;
-		this.addSlotToContainer(new Slot(tileEntity2, TileEntityTranslationTable.INPUT_1, 53, 35));
-		this.addSlotToContainer(new Slot(tileEntity2, TileEntityTranslationTable.INPUT_2, 53 + 18, 35));
+		this.addSlotToContainer(new SlotTranslationTableBookInput(tileEntity2, TileEntityTranslationTable.INPUT_1, 53, 35));
+		this.addSlotToContainer(new SlotTranslationTableTomeInput(tileEntity2, TileEntityTranslationTable.INPUT_2, 53 + 18, 35));
 		this.addSlotToContainer(new SlotTranslationTableOutput(player.player, tileEntity2, TileEntityTranslationTable.OUTPUT, 116, 35));
 		
 		// Get the player's inventory
@@ -46,8 +49,7 @@ public class ContainerTranslationTable extends Container {
 	
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
-		/*
-        ItemStack itemstack = ItemStack.EMPTY;
+		ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack())
@@ -64,11 +66,18 @@ public class ContainerTranslationTable extends Container {
 
                 slot.onSlotChange(itemstack1, itemstack);
             }
-            else if (index != TileEntityTranslationTable.INPUT_1)
+            else if (index != TileEntityTranslationTable.INPUT_1 && index != TileEntityTranslationTable.INPUT_2)
             {
-                if (!TranslationTableRecipes.getInstance().getTranslationResult(itemstack1, itemstack2).isEmpty()) // The recipe IS valid
+                if (!TranslationTableRecipes.getInstance().getTranslationResult(itemstack1).isEmpty())
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
+                    {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                else if (TileEntityFurnace.isItemFuel(itemstack1))
+                {
+                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
                     {
                         return ItemStack.EMPTY;
                     }
@@ -108,8 +117,6 @@ public class ContainerTranslationTable extends Container {
         }
 
         return itemstack;
-        */
-		return null;
     }
 
 }
