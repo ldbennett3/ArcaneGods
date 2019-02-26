@@ -1,29 +1,32 @@
 package com.loganb.arcanegods.blocks.customrecipes;
 
-import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Map;
+import java.util.List;
 import java.util.Map.Entry;
-import java.util.Random;
 
 import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Maps;
 import com.google.common.collect.Table;
-import com.google.common.collect.Table.Cell;
 import com.loganb.arcanegods.init.ModItems;
+import com.loganb.arcanegods.items.books.TranslationTomeBase;
+import com.loganb.arcanegods.items.books.UntranslatedBookBase;
+import com.loganb.arcanegods.util.Reference;
 
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class TranslationTableRecipes {
 
-	/** MOST OF THIS NEEDS TO BE REWORKED COMPLETELY. JUST COPIED GRINDER FOR THE TIME BEING TO GET CODE IN **/
+	/** 
+	 *
+	 * The way this works is it gives you a random book that matches the language,
+	 * however if thats not a good system, may just convert it to defined recipes
+	 * It mostly depends on whether its worth the random aspect. 
+	 * Odds are this will all get deleted and go back to being defined recipes
+	 * 
+	 */
 	
 	private static final TranslationTableRecipes INSTANCE = new TranslationTableRecipes();
-	private final Map<ItemStack, Float> experienceList = Maps.<ItemStack, Float>newHashMap();
-	private final Map<ItemStack, ItemStack> grindingList = Maps.<ItemStack, ItemStack>newHashMap();
+	private float translationExperience = 2.0F;
 	
 	public static TranslationTableRecipes getInstance() {
 		return INSTANCE;
@@ -33,27 +36,55 @@ public class TranslationTableRecipes {
 		
 	}
 	
-	public void addRecipe(ItemStack input1, ItemStack input2, ItemStack result, float experience) {
-		if (getTranslationResult(input1, input2) != ItemStack.EMPTY && getTranslationResult(input2, input1) != ItemStack.EMPTY) {
-			return; // Don't add an existing recipe
+	/**
+	 * Gets a translation result when given an untranslated book and tome
+	 * @param book The book to translate
+	 * @param tome The tome to translate the book with
+	 * @return Returns ItemStack.EMPTY if no result, otherwise returns a random translated book
+	 */
+	public ItemStack getTranslationResult(ItemStack book, ItemStack tome) {
+		Item stack1 = book.getItem();
+		Item stack2 = tome.getItem();
+		UntranslatedBookBase uBook;
+		TranslationTomeBase tBook;
+		
+		if(stack1 instanceof UntranslatedBookBase) {
+			uBook = (UntranslatedBookBase)stack1;
+
+			if(stack2 instanceof TranslationTomeBase) {
+				tBook = (TranslationTomeBase)stack2;
+				
+				return getRandomBookByLanguage(uBook.getLanguage());
+			}
+			
 		}
 		
-		//this.grindingList.put(input1, result);
-		//this.experienceList.put(result, Float.valueOf(experience));
-		
+		return ItemStack.EMPTY;
 	}
 	
-	public List<Item> getIngredients() {
-		List<Item> temp = new ArrayList<>();
+	/**
+	 * Retrieves a book from the ModItems list that has the correct language
+	 * @param lang Language of the book to retrieve
+	 * @return Item of the book
+	 */
+	public ItemStack getRandomBookByLanguage(Reference.BOOK_LANGUAGE lang) {
 		
-		for (Entry<ItemStack, ItemStack> ent : this.grindingList.entrySet()) {
-			temp.add(ent.getKey().getItem());
+		ArrayList<Item> books = new ArrayList<Item>();
+		
+		for(Item i : ModItems.ITEMS) {
+			if(i instanceof UntranslatedBookBase) {
+				UntranslatedBookBase temp = (UntranslatedBookBase)i;
+				if(temp.getLanguage() == lang) {
+					books.add(i);
+				}
+			}
 		}
 		
-		return temp;
-	}
-	
-	public ItemStack getTranslationResult(ItemStack input1, ItemStack input2) {
+		if(!books.isEmpty()) {
+			double index = Math.random() * books.size();
+			return new ItemStack(books.get((int)index));
+		}
+		
 		return ItemStack.EMPTY;
 	}
 	
@@ -62,12 +93,7 @@ public class TranslationTableRecipes {
 	}
 	
 	public float getTranslatingExperience(ItemStack stack) {
-		for (Entry<ItemStack, Float> entry : this.experienceList.entrySet()) {
-			if (this.compareItemStacks(stack, (ItemStack)entry.getKey())) {
-				return ((Float)entry.getValue()).floatValue();
-			}
-		}
-		return 0.0F;
+		return translationExperience;
 	}
 	
 }
