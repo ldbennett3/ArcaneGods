@@ -16,6 +16,11 @@ public class SlotTranslationTableBookInput extends Slot {
 	public boolean isItemValid(ItemStack stack) {
 		return stack.getItem() instanceof UntranslatedBookBase;
 	}
+	
+	@Override
+	public int getItemStackLimit(ItemStack stack) {
+		return 1;
+	}
 
 	
 }

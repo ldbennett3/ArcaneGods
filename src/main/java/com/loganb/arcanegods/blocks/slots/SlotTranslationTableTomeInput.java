@@ -17,5 +17,8 @@ public class SlotTranslationTableTomeInput extends Slot {
 		return stack.getItem() instanceof TranslationTomeBase;
 	}
 
-	
+	@Override
+	public int getItemStackLimit(ItemStack stack) {
+		return 1;
+	}
 }

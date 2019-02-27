@@ -1,43 +1,23 @@
 package com.loganb.arcanegods.blocks.tileentities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.loganb.arcanegods.blocks.customrecipes.GrinderRecipes;
-import com.loganb.arcanegods.blocks.devices.Grinder;
+import com.loganb.arcanegods.blocks.customrecipes.TranslationTableRecipes;
 import com.loganb.arcanegods.items.books.TranslationTomeBase;
 import com.loganb.arcanegods.items.books.UntranslatedBookBase;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFurnace;
-import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ItemStackHelper;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemBoat;
-import net.minecraft.item.ItemDoor;
-import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
-import net.minecraft.item.ItemTool;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TileEntityTranslationTable extends TileEntity implements IInventory, ITickable {
-	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(2, ItemStack.EMPTY);
+	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
 	private String customName;
 	
 	public static final int INPUT_1 = 0, INPUT_2 = 1, OUTPUT = 2;
@@ -123,7 +103,6 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 		}
 	}
 	
-	// REMEMBER PROCESSES HAPPENING WHEN RE-ENTERING THE 
 	@Override
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
@@ -133,8 +112,6 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 		if (compound.hasKey("CustomName", 8)) this.setCustomName(compound.getString("CustomName"));
 	}
 	
-	
-	// STORE PROCESSES HAPPENING WHEN EXITING THE FURNACE
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
@@ -152,6 +129,7 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 	@Override
 	public void update() {
 		boolean flag1 = false;
+		boolean hasResult = false;
 		
 		if(!this.world.isRemote) {
 			ItemStack input1 = (ItemStack)this.inventory.get(INPUT_1);
@@ -213,7 +191,7 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 	
 	@Override
 	public int getFieldCount() {
-		return 3;
+		return 4;
 	}
 	
 	@Override

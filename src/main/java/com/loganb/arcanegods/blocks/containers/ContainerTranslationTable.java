@@ -5,6 +5,8 @@ import com.loganb.arcanegods.blocks.slots.SlotTranslationTableBookInput;
 import com.loganb.arcanegods.blocks.slots.SlotTranslationTableOutput;
 import com.loganb.arcanegods.blocks.slots.SlotTranslationTableTomeInput;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityTranslationTable;
+import com.loganb.arcanegods.items.books.TranslationTomeBase;
+import com.loganb.arcanegods.items.books.UntranslatedBookBase;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -68,14 +70,14 @@ public class ContainerTranslationTable extends Container {
             }
             else if (index != TileEntityTranslationTable.INPUT_1 && index != TileEntityTranslationTable.INPUT_2)
             {
-                if (!TranslationTableRecipes.getInstance().getTranslationResult(itemstack1).isEmpty())
+                if (itemstack1.getItem() instanceof UntranslatedBookBase)
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {
                         return ItemStack.EMPTY;
                     }
                 }
-                else if (TileEntityFurnace.isItemFuel(itemstack1))
+                else if (itemstack1.getItem() instanceof TranslationTomeBase)
                 {
                     if (!this.mergeItemStack(itemstack1, 1, 2, false))
                     {

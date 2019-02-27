@@ -5,6 +5,7 @@ import com.loganb.arcanegods.blocks.tileentities.TileEntityEnchantedFurnace;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityGrinder;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityLargeCapacityFurnace;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityMagicInfuser;
+import com.loganb.arcanegods.blocks.tileentities.TileEntityTranslationTable;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -16,6 +17,7 @@ public class TileEntityHandler {
 		GameRegistry.registerTileEntity(TileEntityLargeCapacityFurnace.class, "large_capacity_furnace");
 		GameRegistry.registerTileEntity(TileEntityMagicInfuser.class, "magic_infuser");
 		GameRegistry.registerTileEntity(TileEntityGrinder.class, "grinder");
+		GameRegistry.registerTileEntity(TileEntityTranslationTable.class, "translation_table");
 	}
 	
 }
