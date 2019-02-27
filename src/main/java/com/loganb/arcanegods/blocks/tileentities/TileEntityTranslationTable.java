@@ -136,6 +136,7 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 			ItemStack input2 = (ItemStack)this.inventory.get(INPUT_2);
 			ItemStack output = (ItemStack)this.inventory.get(OUTPUT);
 			
+			
 			if(!input1.isEmpty() || !input2.isEmpty() || !output.isEmpty()) {
 				flag1 = true;
 			}
@@ -145,6 +146,28 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 		if (flag1) {
 			this.markDirty();
 		}
+	}
+	
+	public void translateContents() {
+		
+		if(!this.world.isRemote) {
+			ItemStack input1 = (ItemStack)this.inventory.get(INPUT_1);
+			ItemStack input2 = (ItemStack)this.inventory.get(INPUT_2);
+			ItemStack output = (ItemStack)this.inventory.get(OUTPUT);
+			
+			if(!input1.isEmpty() && !input2.isEmpty() && output.isEmpty()) {
+				
+				TranslationTableRecipes r = TranslationTableRecipes.getInstance();
+				
+				if(!r.getTranslationResult(input1, input2).isEmpty()) {
+					this.inventory.set(OUTPUT, r.getTranslationResult(input1, input2));
+					this.inventory.set(INPUT_1, ItemStack.EMPTY);
+				}
+				
+			}
+			
+		}
+		
 	}
 	
 	public static boolean isItemTome(ItemStack stack) {

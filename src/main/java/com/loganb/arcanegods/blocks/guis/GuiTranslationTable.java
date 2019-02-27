@@ -1,6 +1,7 @@
 package com.loganb.arcanegods.blocks.guis;
 
 import com.loganb.arcanegods.blocks.containers.ContainerTranslationTable;
+import com.loganb.arcanegods.blocks.customrecipes.TranslationTableRecipes;
 import com.loganb.arcanegods.blocks.tileentities.TileEntityTranslationTable;
 import com.loganb.arcanegods.items.guis.GuiCustomBookScreen;
 import com.loganb.arcanegods.util.Reference;
@@ -10,6 +11,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.BossInfo.Color;
 import net.minecraftforge.fml.relauncher.Side;
@@ -51,7 +53,7 @@ public class GuiTranslationTable extends GuiContainer {
 	}
 	
 	@SideOnly(Side.CLIENT)
-    static class TranslateButton extends GuiButton {
+    public class TranslateButton extends GuiButton {
 
 	    public TranslateButton(int buttonId, int x, int y)
 	    {
@@ -85,9 +87,10 @@ public class GuiTranslationTable extends GuiContainer {
 	    	
 	    	boolean clicked = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
 	    	
-	    	System.out.println("\n\nClicked the button");
+	    	tileEntity.translateContents();
 	    	
 	    	super.mouseReleased(mouseX, mouseY);
 	    }
+	    
 	}
 }
