@@ -19,6 +19,8 @@ import net.minecraft.util.text.TextComponentTranslation;
 public class TileEntityTranslationTable extends TileEntity implements IInventory, ITickable {
 	private NonNullList<ItemStack> inventory = NonNullList.<ItemStack>withSize(3, ItemStack.EMPTY);
 	private String customName;
+	private boolean hasResult = false;
+	private ItemStack result = ItemStack.EMPTY;
 	
 	public static final int INPUT_1 = 0, INPUT_2 = 1, OUTPUT = 2;
 
@@ -129,7 +131,6 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 	@Override
 	public void update() {
 		boolean flag1 = false;
-		boolean hasResult = false;
 		
 		if(!this.world.isRemote) {
 			ItemStack input1 = (ItemStack)this.inventory.get(INPUT_1);
@@ -139,6 +140,22 @@ public class TileEntityTranslationTable extends TileEntity implements IInventory
 			
 			if(!input1.isEmpty() || !input2.isEmpty() || !output.isEmpty()) {
 				flag1 = true;
+			}
+			
+			if(!input1.isEmpty() && !input2.isEmpty()) {
+			
+				if(!result.isEmpty() && hasResult) {
+					this.inventory.set(OUTPUT, result);
+				} else {
+					hasResult = false;
+					result = TranslationTableRecipes.getInstance().getTranslationResult(input1, input2);
+					if(!result.isEmpty()) {
+						hasResult = true;
+					}
+				}
+				
+			} else {
+				this.inventory.set(OUTPUT, ItemStack.EMPTY);	
 			}
 			
 		}

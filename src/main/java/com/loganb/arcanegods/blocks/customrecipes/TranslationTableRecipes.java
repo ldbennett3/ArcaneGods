@@ -54,7 +54,9 @@ public class TranslationTableRecipes {
 			if(stack2 instanceof TranslationTomeBase) {
 				tBook = (TranslationTomeBase)stack2;
 				
-				return getRandomBookByLanguage(uBook.getLanguage());
+				if(uBook.getLanguage() == tBook.getLanguage() ) {
+					return getRandomBookByLanguage(uBook.getLanguage());
+				}
 			}
 			
 		}
@@ -83,6 +85,8 @@ public class TranslationTableRecipes {
 		if(!books.isEmpty()) {
 			double index = Math.random() * books.size();
 			return new ItemStack(books.get((int)index));
+		} else {
+			System.out.print("Book list was empty");
 		}
 		
 		return ItemStack.EMPTY;

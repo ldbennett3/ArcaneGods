@@ -21,8 +21,8 @@ public class ContainerTranslationTable extends Container {
 	
 	public ContainerTranslationTable(InventoryPlayer player, TileEntityTranslationTable tileEntity2) {
 		this.tileEntity = tileEntity2;
-		this.addSlotToContainer(new SlotTranslationTableBookInput(tileEntity2, TileEntityTranslationTable.INPUT_1, 53, 35));
-		this.addSlotToContainer(new SlotTranslationTableTomeInput(tileEntity2, TileEntityTranslationTable.INPUT_2, 53 + 18, 35));
+		this.addSlotToContainer(new SlotTranslationTableBookInput(tileEntity2, TileEntityTranslationTable.INPUT_1, 36, 34));
+		this.addSlotToContainer(new SlotTranslationTableTomeInput(tileEntity2, TileEntityTranslationTable.INPUT_2, 58, 34));
 		this.addSlotToContainer(new SlotTranslationTableOutput(player.player, tileEntity2, TileEntityTranslationTable.OUTPUT, 116, 35));
 		
 		// Get the player's inventory

@@ -57,6 +57,10 @@ public class TranslationTomeBase extends ItemBase implements IHasModel {
 		
 	}
 	
+	public Reference.BOOK_LANGUAGE getLanguage() {
+		return this.language;
+	}
+	
 	protected void setPages() {
 		pages = new GuiCustomBookScreen.Page[]{};
 	}
