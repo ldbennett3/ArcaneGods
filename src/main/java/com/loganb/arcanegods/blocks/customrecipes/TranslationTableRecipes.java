@@ -7,6 +7,7 @@ import java.util.Map.Entry;
 import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Table;
 import com.loganb.arcanegods.init.ModItems;
+import com.loganb.arcanegods.items.books.CustomBookBase;
 import com.loganb.arcanegods.items.books.TranslationTomeBase;
 import com.loganb.arcanegods.items.books.UntranslatedBookBase;
 import com.loganb.arcanegods.util.Reference;
@@ -74,11 +75,15 @@ public class TranslationTableRecipes {
 		ArrayList<Item> books = new ArrayList<Item>();
 		
 		for(Item i : ModItems.ITEMS) {
-			if(i instanceof UntranslatedBookBase) {
-				UntranslatedBookBase temp = (UntranslatedBookBase)i;
+			if(i instanceof CustomBookBase) {
+				CustomBookBase temp = (CustomBookBase)i;
 				if(temp.getLanguage() == lang) {
 					books.add(i);
+				} else {
+					//System.out.print(i.getUnlocalizedName() + " failed language check for " + lang.name());
 				}
+			} else {
+				//System.out.print("No custom book bases?");
 			}
 		}
 		
@@ -86,7 +91,7 @@ public class TranslationTableRecipes {
 			double index = Math.random() * books.size();
 			return new ItemStack(books.get((int)index));
 		} else {
-			System.out.print("Book list was empty");
+			// System.out.print("Book list was empty");
 		}
 		
 		return ItemStack.EMPTY;

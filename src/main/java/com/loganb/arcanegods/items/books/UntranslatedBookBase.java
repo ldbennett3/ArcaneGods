@@ -65,6 +65,12 @@ public class UntranslatedBookBase extends ItemBase implements IHasModel {
 		pages = new GuiCustomBookScreen.Page[]{};
 	}
 	
+	@Override
+	public int getItemStackLimit() {
+		return 1;
+	}
+	
+	
 	private void setImages() {
 		String rL = Reference.MOD_ID + ":textures/gui/book_pictures/";
 		int leftPageStart = -111; // Good starting pos for pics. More negative = more left

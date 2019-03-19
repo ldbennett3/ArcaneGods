@@ -13,7 +13,7 @@ import com.loganb.arcanegods.blocks.devices.Grinder;
 import com.loganb.arcanegods.blocks.devices.LargeCapacityFurnace;
 import com.loganb.arcanegods.blocks.devices.MagicInfuser;
 import com.loganb.arcanegods.blocks.devices.TranslationTable;
-import com.loganb.arcanegods.items.books.UntranslatedCustomBook;
+import com.loganb.arcanegods.items.books.CustomBookBase;
 import com.loganb.arcanegods.util.Reference;
 
 import net.minecraft.block.Block;

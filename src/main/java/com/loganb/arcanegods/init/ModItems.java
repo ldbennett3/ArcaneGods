@@ -7,7 +7,7 @@ import com.loganb.arcanegods.Main;
 import com.loganb.arcanegods.items.FuelItemBase;
 import com.loganb.arcanegods.items.ItemBase;
 import com.loganb.arcanegods.items.armor.ArmorBase;
-import com.loganb.arcanegods.items.books.UntranslatedCustomBook;
+import com.loganb.arcanegods.items.books.CustomBookBase;
 import com.loganb.arcanegods.items.books.TranslationTomeBase;
 import com.loganb.arcanegods.items.books.UntranslatedBookBase;
 import com.loganb.arcanegods.items.tools.SwordBase;
@@ -53,15 +53,17 @@ public class ModItems {
 	public static final Item ARCANE_COAL = new FuelItemBase("arcane_coal", Main.itemsTab, 1600 * 4);
 	public static final Item ALCHEMICAL_FUEL = new ItemBase("alchemical_fuel", Main.itemsTab);
 	public static final Item ENCHANCED_ALCHEMICAL_FUEL = new ItemBase("enhanced_alchemical_fuel", Main.itemsTab);
-	
-	public static final Item UNTRANSLATED_TEST_BOOK = new UntranslatedCustomBook("untranslated_custom_book", null, Reference.BOOK_LANGUAGE.DRACONIC);
 
+	// Real written books are handled in BookRegistration
+	
+	// Untranslated default books
 	public static final Item UNTRANSLATED_CASMODIAN = new UntranslatedBookBase("untranslated_casmodian", Main.itemsTab, Reference.BOOK_LANGUAGE.CASMODIAN);
 	public static final Item UNTRANSLATED_DRACONIC = new UntranslatedBookBase("untranslated_draconic", Main.itemsTab, Reference.BOOK_LANGUAGE.DRACONIC);
 	public static final Item UNTRANSLATED_ELVISH = new UntranslatedBookBase("untranslated_elvish", Main.itemsTab, Reference.BOOK_LANGUAGE.ELVISH);
 	public static final Item UNTRANSLATED_ORCISH = new UntranslatedBookBase("untranslated_orcish", Main.itemsTab, Reference.BOOK_LANGUAGE.ORCISH);
 	public static final Item UNTRANSLATED_PORALIAN = new UntranslatedBookBase("untranslated_poralian", Main.itemsTab, Reference.BOOK_LANGUAGE.PORALIAN);
 	
+	// Translation Tomes
 	public static final Item TRANSLATION_TOME_CASMODIAN = new TranslationTomeBase("translation_tome_casmodian", Main.itemsTab, Reference.BOOK_LANGUAGE.CASMODIAN);
 	public static final Item TRANSLATION_TOME_DRACONIC = new TranslationTomeBase("translation_tome_draconic", Main.itemsTab, Reference.BOOK_LANGUAGE.DRACONIC);
 	public static final Item TRANSLATION_TOME_ELVISH = new TranslationTomeBase("translation_tome_elvish", Main.itemsTab, Reference.BOOK_LANGUAGE.ELVISH);
