@@ -91,7 +91,7 @@ public class TranslationTableRecipes {
 			double index = Math.random() * books.size();
 			return new ItemStack(books.get((int)index));
 		} else {
-			// System.out.print("Book list was empty");
+			System.out.print("Book list was empty");
 		}
 		
 		return ItemStack.EMPTY;

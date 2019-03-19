@@ -8,6 +8,7 @@ import com.loganb.arcanegods.items.FuelItemBase;
 import com.loganb.arcanegods.items.ItemBase;
 import com.loganb.arcanegods.items.armor.ArmorBase;
 import com.loganb.arcanegods.items.books.CustomBookBase;
+import com.loganb.arcanegods.items.guis.GuiCustomBookScreen.*;
 import com.loganb.arcanegods.items.books.TranslationTomeBase;
 import com.loganb.arcanegods.items.books.UntranslatedBookBase;
 import com.loganb.arcanegods.items.tools.SwordBase;
@@ -19,6 +20,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.util.EnumHelper;
 
 public class ModItems {
@@ -53,8 +56,6 @@ public class ModItems {
 	public static final Item ARCANE_COAL = new FuelItemBase("arcane_coal", Main.itemsTab, 1600 * 4);
 	public static final Item ALCHEMICAL_FUEL = new ItemBase("alchemical_fuel", Main.itemsTab);
 	public static final Item ENCHANCED_ALCHEMICAL_FUEL = new ItemBase("enhanced_alchemical_fuel", Main.itemsTab);
-
-	// Real written books are handled in BookRegistration
 	
 	// Untranslated default books
 	public static final Item UNTRANSLATED_CASMODIAN = new UntranslatedBookBase("untranslated_casmodian", Main.itemsTab, Reference.BOOK_LANGUAGE.CASMODIAN);
@@ -79,6 +80,25 @@ public class ModItems {
 	public static final Item PALE_CRYSTAL_CHESTPLATE = new ArmorBase("pale_crystal_chestplate", ARMOR_MATERIAL_PALE_CRYSTAL, 1, EntityEquipmentSlot.CHEST, Main.itemsTab);
 	public static final Item PALE_CRYSTAL_LEGGINGS = new ArmorBase("pale_crystal_leggings", ARMOR_MATERIAL_PALE_CRYSTAL, 2, EntityEquipmentSlot.LEGS, Main.itemsTab);
 	public static final Item PALE_CRYSTAL_BOOTS = new ArmorBase("pale_crystal_boots", ARMOR_MATERIAL_PALE_CRYSTAL, 1, EntityEquipmentSlot.FEET, Main.itemsTab);
+	
+	// Translated Books with content
+	private static final String PHOTO_LOC = Reference.MOD_ID + ":textures/gui/book_pictures/";
+	
+	// Test book, photos are defined first then the actual book to keep it clean.
+	private static ResourceLocation madnessPhoto = new ResourceLocation(PHOTO_LOC + "madness.png");
+	public static final Item TEST_BOOK = new CustomBookBase("test_book", Main.itemsTab, Reference.BOOK_LANGUAGE.CASMODIAN, 
+			new String[] {
+					"This is a tooltip.", 
+					TextFormatting.BLUE + "They can be colored too."
+			}, 
+			new Page[] { 
+					new Page("Left page text is here. You can add as much as you want.", "Right page text is here, it can also be as long as you want."),
+					new Page("Woah a second page. Fancy.", "This is the test book, I can literally just put anything I want in it.")
+			}, 
+			new DisplayImage[] { 
+					new DisplayImage(madnessPhoto, -100, 100, 0, 0, 0, 0, 0) 
+			}
+	) ;
 
 	
 }
